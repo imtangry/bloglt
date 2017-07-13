@@ -1,0 +1,21 @@
+#top {
+	width: 100%;
+	height: 50px;
+	background: #E4B9B9;
+}
+
+#title {
+	height: 30px;
+	width: 984px;
+	overflow: hidden;
+	font: 600 30px/30px "微软雅黑";
+	color: #444444;
+	padding: 0 20px;
+	
+}
+
+#editor {
+	width: 1024px;
+	height: 640px;
+	margin: 20px auto 0;
+}

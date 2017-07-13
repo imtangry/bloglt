@@ -1,0 +1,179 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<meta charset="UTF-8">
+		<title>汤的博客</title>
+		<link rel="stylesheet" type="text/css" href="/bloglt-static-file/css/reset.css"/>
+		<link rel="stylesheet" type="text/css" href="/bloglt-static-file/css/common.css"/>
+		<link rel="stylesheet" type="text/css" href="/bloglt-static-file/css/index.css" />
+		<script src="/bloglt-static-file/js/index.js" type="text/javascript" charset="utf-8"></script>
+	</head>
+
+	<body>
+
+		<div class="go_top">
+			<a href="#top"></a>
+		</div><a name="top" id="top"></a>
+		<div id="head">
+
+			<div class="head_nav">
+				<div class="head_top">
+					<p>怒转IT坑的咸鱼一枚，这个博客做的我头皮发麻</p>
+				</div>
+				<ul class="head_nav_lists">
+					<li>
+						<a href="org-index.vm" style="border-bottom: none;">首页</a>
+					</li>
+					<li>
+						<a href="artic.vm">日志</a>
+					</li>
+					<li>
+						<a href="music.html">音乐</a>
+					</li>
+					<li>
+						<a href="pics.html">图片</a>
+					</li>
+				</ul>
+			</div>
+		</div>
+		<div id="body">
+			<div id="body_right">
+				<div class="body_right_contentSearch">
+					<form action="#" class="form">
+						<input type="text" class="form_Linput" />
+						<button type="submit" class="form_button">搜索</button>
+					</form>
+				</div>
+				<div class="body_right_contentTags"><span><p>标签</p></span>
+					<a href="" class="to_tags">Java</a>
+					<a href="" class="to_tags">JavaScript</a>
+					<a href="" class="to_tags">Linux</a>
+					<a href="" class="to_tags">HTML</a>
+					<a href="" class="to_tags">CSS</a>
+					<a href="" class="to_tags">随记</a>
+					<a href="" class="to_tags">Other</a>
+					
+				</div>
+				<div class="body_right_contentAd"></div>
+				<div class="body_right_contentAd"></div>
+				<div class="body_right_contentAd"></div>
+			</div>
+			<div class="body_left">
+
+				<h2 class="article_title"><a href="#" class="article_title_href">Java学习中遇到的各种问题(持续更新)</a></h2>
+				<div class="date">日期：2017-05-11</div>
+				<div class="tags">
+					<a href="">Java</a>
+				</div>
+				<div class="preArticle">
+					<div class="preImg"><img alt="" class="img" /></div>
+					<div class="preText">
+						<p> 自动转换类型： 小范围自动像大的转byte—short—int（int符合大小适中可以往小的转）—long； char—int（int符合大小适中可以往小的转） ；int—double；float—double； 其中可能损失精度的：long—float/double;int—float;
+						</p>
+						<p> if不加{}执行仅限第一个语句。</p>
+						<p> 栈堆：</p>
+						<p>
+							栈：自动分配连续的空间，存取速度比堆要快，栈内部多个值相等的变量是可以指向一个地址，后进先出。局部变量。 堆：不连续，new的对象。
+						</p>
+						<p>
+							堆里的方法区：依然是堆，存放类的代码信息，static变量，常量池。</p>
+						<p>static变量是类变量，类属性，静态变量，存在方法区，不在new的对象里生成，可直接调用； static方法同理。在方法区，可直接调用。
+						</p>
+						<p></p>
+					</div>
+				</div>
+				<div class="more">
+					<a href="#" class="more_href">more</a>
+				</div>
+			</div>
+			<div class="body_left">
+
+				<h2 class="article_title"><a href="#" class="article_title_href">Java学习中遇到的各种问题(持续更新)</a></h2>
+				<div class="date">日期：2017-05-11</div>
+				<div class="tags">
+					<a href="">Java</a>
+				</div>
+				<div class="preArticle">
+					<div class="preImg"><img alt="" class="img" /></div>
+					<div class="preText">
+						<p> 自动转换类型： 小范围自动像大的转byte—short—int（int符合大小适中可以往小的转）—long； char—int（int符合大小适中可以往小的转） ；int—double；float—double； 其中可能损失精度的：long—float/double;int—float;
+						</p>
+						<p> if不加{}执行仅限第一个语句。</p>
+						<p> 栈堆：</p>
+						<p>
+							栈：自动分配连续的空间，存取速度比堆要快，栈内部多个值相等的变量是可以指向一个地址，后进先出。局部变量。 堆：不连续，new的对象。
+						</p>
+						<p>
+							堆里的方法区：依然是堆，存放类的代码信息，static变量，常量池。</p>
+						<p>static变量是类变量，类属性，静态变量，存在方法区，不在new的对象里生成，可直接调用； static方法同理。在方法区，可直接调用。
+						</p>
+						<p></p>
+					</div>
+				</div>
+				<div class="more">
+					<a href="#" class="more_href">more</a>
+				</div>
+			</div>
+			<div class="body_left">
+
+				<h2 class="article_title"><a href="#" class="article_title_href">Java学习中遇到的各种问题(持续更新)</a></h2>
+				<div class="date">日期：2017-05-11</div>
+				<div class="tags">
+					<a href="">Java</a>
+				</div>
+				<div class="preArticle">
+					<div class="preImg"><img alt="" class="img" /></div>
+					<div class="preText">
+						<p> 自动转换类型： 小范围自动像大的转byte—short—int（int符合大小适中可以往小的转）—long； char—int（int符合大小适中可以往小的转） ；int—double；float—double； 其中可能损失精度的：long—float/double;int—float;
+						</p>
+						<p> if不加{}执行仅限第一个语句。</p>
+						<p> 栈堆：</p>
+						<p>
+							栈：自动分配连续的空间，存取速度比堆要快，栈内部多个值相等的变量是可以指向一个地址，后进先出。局部变量。 堆：不连续，new的对象。
+						</p>
+						<p>
+							堆里的方法区：依然是堆，存放类的代码信息，static变量，常量池。</p>
+						<p>static变量是类变量，类属性，静态变量，存在方法区，不在new的对象里生成，可直接调用； static方法同理。在方法区，可直接调用。
+						</p>
+						<p></p>
+					</div>
+				</div>
+				<div class="more">
+					<a href="#" class="more_href">more</a>
+				</div>
+			</div>
+			<div class="body_left">
+
+				<h2 class="article_title"><a href="#" class="article_title_href">Java学习中遇到的各种问题(持续更新)</a></h2>
+				<div class="date">日期：2017-05-11</div>
+				<div class="tags">
+					<a href="">Java</a>
+				</div>
+				<div class="preArticle">
+					<div class="preImg"><img alt="" class="img" /></div>
+					<div class="preText">
+						<p> 自动转换类型： 小范围自动像大的转byte—short—int（int符合大小适中可以往小的转）—long； char—int（int符合大小适中可以往小的转） ；int—double；float—double； 其中可能损失精度的：long—float/double;int—float;
+						</p>
+						<p> if不加{}执行仅限第一个语句。</p>
+						<p> 栈堆：</p>
+						<p>
+							栈：自动分配连续的空间，存取速度比堆要快，栈内部多个值相等的变量是可以指向一个地址，后进先出。局部变量。 堆：不连续，new的对象。
+						</p>
+						<p>
+							堆里的方法区：依然是堆，存放类的代码信息，static变量，常量池。</p>
+						<p>static变量是类变量，类属性，静态变量，存在方法区，不在new的对象里生成，可直接调用； static方法同理。在方法区，可直接调用。
+						</p>
+						<p></p>
+					</div>
+				</div>
+				<div class="more">
+					<a href="#" class="more_href">more</a>
+				</div>
+			</div>
+		</div>
+		<div id="footer">
+		</div>
+	</body>
+
+</html>

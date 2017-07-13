@@ -1,0 +1,64 @@
+/*********** 头部公共的CSS开始**************/
+
+
+/**************头部开始********************/
+
+#head {
+	height: 40px;
+	width: 100%;
+	background: #333333;
+}
+
+#head_content {
+	height: 40px;
+	width: 1024px;
+	margin: 0 auto;
+}
+
+
+/**************头部LOGO********************/
+
+#head_content_logo {
+	float: left;
+	width: 100px;
+	height: 50px;
+	background: #000000;
+}
+
+
+/**************头部导航********************/
+
+.nav_on {
+	background: #000000;
+}
+
+#head_content_nav {
+	display: block;
+	float: right;
+	height: 40px;
+}
+
+#head_content_nav li {
+	display: block;
+	float: left;
+	margin-left: 10px;
+}
+
+#head_content_nav a {
+	text-decoration: none;
+	color: #AAAAAA;
+	letter-spacing: 4px;
+	display: block;
+	height: 40px;
+	width: 60px;
+	font: 100 16px/40px "microsoft yahei";
+	text-align: center;
+}
+
+#head_content_nav a:hover {
+	background: #000000;
+	color: #FFFFFF;
+}
+
+
+/*********** 头部公共的CSS结束***************/

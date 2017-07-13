@@ -1,0 +1,35 @@
+/**************头部图片导航********************/
+
+#top_slide {
+	margin: 20px auto 0;
+	width: 1024px;
+	height: 320px;
+}
+
+
+/**************正文部分********************/
+
+#body {
+	width: 1024px;
+	height: 1000px;
+	margin: 0 auto;
+	padding-top: 30px;
+}
+
+.article {
+	background: #FFFFFF;
+	box-shadow: 2px 4px 4px #999999;
+}
+
+.article_title {
+	display: block;
+	background: #AAAAAA;
+}
+
+.article_title a:hover {
+	color: #FFFFFF;
+}
+.article_date{
+	height: 20px;
+	font: 100 14px/20px "微软雅黑";
+}

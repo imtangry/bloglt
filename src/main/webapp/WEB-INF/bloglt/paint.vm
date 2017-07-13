@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<meta charset="UTF-8">
+		<title>日志</title>
+		<link rel="stylesheet" type="text/css" href="/bloglt-static-file/css/reset.css" />
+		<link rel="stylesheet" type="text/css" href="/bloglt-static-file/css/paint.css" />
+		<script src="/bloglt-static-file/write/ckeditor.js"></script>
+	</head>
+
+	<body>
+		<div id="top">
+		
+			
+		</div>
+		<div id="editor">
+			<form>
+				<textarea name="title" id="title" rows="1" placeholder="添加标题" maxlength="50"></textarea>
+				<textarea name="ckeditor" id="ckeditor" rows="10" cols="80"> </textarea>
+				<script>
+					// Replace the <textarea id="editor1"> with a CKEditor
+					// instance, using default configuration.
+					CKEDITOR.replace('ckeditor',{
+						uiColor:'#ffffff'
+						
+					});
+				</script>
+			</form>
+		</div>
+	</body>
+
+</html>
