@@ -1,16 +1,55 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
 <mapper namespace="win.bloglt.user.dao.UsersMapper" >
+
   <resultMap id="BaseResultMap" type="win.bloglt.user.entity.Users" >
     <id column="user_id" property="userId" jdbcType="INTEGER" />
     <result column="user_name" property="userName" jdbcType="VARCHAR" />
     <result column="password" property="password" jdbcType="VARCHAR" />
     <result column="real_name" property="realName" jdbcType="VARCHAR" />
     <result column="user_gender" property="userGender" jdbcType="TINYINT" />
+    <collection property="roleList" resultMap="RoleResultMap"/>
   </resultMap>
+
+  <resultMap id="RoleResultMap" type="win.bloglt.user.entity.Role" >
+    <id column="role_id" property="roleId" jdbcType="SMALLINT" />
+    <result column="role_name" property="roleName" jdbcType="VARCHAR" />
+    <result column="role_description" property="roleDescription" jdbcType="VARCHAR" />
+    <collection property="permissionList" resultMap="PermissionResultMap"/>
+  </resultMap>
+
+  <resultMap id="PermissionResultMap" type="win.bloglt.user.entity.Permission" >
+    <id column="permission_id" property="permissionId" jdbcType="INTEGER" />
+    <result column="permission_operation" property="permissionOperation" jdbcType="VARCHAR" />
+    <result column="permission_description" property="permissionDescription" jdbcType="VARCHAR" />
+  </resultMap>
+
   <sql id="Base_Column_List" >
-    user_id, user_name, password, real_name, user_gender
+    u.user_id, user_name, password, real_name, user_gender
   </sql>
+  <sql id="Role_Column_List" >
+    r.role_id, r.role_name, r.role_description
+  </sql>
+  <sql id="Permission_Column_List" >
+    p.permission_id, p.permission_operation, p.permission_description
+  </sql>
+
+  <select id="selectByUserName" resultMap="BaseResultMap"  >
+    select
+    <include refid="Base_Column_List" />,<include refid="Role_Column_List" />,<include refid="Permission_Column_List" />
+    from users u
+    LEFT JOIN users_role ur ON u.user_id=ur.user_id
+    LEFT JOIN role r ON r.role_id=ur.role_id
+    LEFT JOIN role_permission rp ON rp.role_id=r.role_id
+    LEFT JOIN permission p ON rp.permission_id=p.permission_id
+    where user_name = #{userName}
+  </select>
+
+
+
+
+
+
   <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Integer" >
     select 
     <include refid="Base_Column_List" />

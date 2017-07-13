@@ -1,4 +1,4 @@
-package win.bloglt.user;
+package win.bloglt.user.service;
 
 import win.bloglt.user.entity.Users;
 

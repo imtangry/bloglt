@@ -14,14 +14,14 @@
     <context:component-scan base-package="win.bloglt"/>
     <context:property-placeholder location="classpath:jdbc.properties"/>
 
-    <!--<bean class="org.mybatis.spring.SqlSessionFactoryBean" id="sqlSessionFactory">-->
-        <!--<property name="dataSource" ref="dataSource"/>-->
-        <!--<property name="mapperLocations" value="classpath:win/bloglt/**/**.xml"/>-->
-    <!--</bean>-->
-    <!--<bean class="org.mybatis.spring.mapper.MapperScannerConfigurer" id="mapperScannerConfigurer">-->
-        <!--<property name="basePackage" value="tang.tangry.**.dao"/>-->
-        <!--<property name="sqlSessionFactoryBeanName" value="sqlSessionFactory"/>-->
-    <!--</bean>-->
+    <bean class="org.mybatis.spring.SqlSessionFactoryBean" id="sqlSessionFactory">
+        <property name="dataSource" ref="dataSource"/>
+        <property name="mapperLocations" value="classpath:win/bloglt/**/**.xml"/>
+    </bean>
+    <bean class="org.mybatis.spring.mapper.MapperScannerConfigurer" id="mapperScannerConfigurer">
+        <property name="basePackage" value="win.bloglt.*.dao"/>
+        <property name="sqlSessionFactoryBeanName" value="sqlSessionFactory"/>
+    </bean>
 
     <tx:annotation-driven transaction-manager="transactionManager"/>
     <bean class="org.springframework.jdbc.datasource.DataSourceTransactionManager" id="transactionManager">
@@ -62,5 +62,5 @@
         <!-- <property name="filters" value="stat" /> -->
         <property name="filters" value="mergeStat"/>
     </bean>
-
+    <import resource="spring-shiro.xml"/>
 </beans>

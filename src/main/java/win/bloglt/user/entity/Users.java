@@ -1,5 +1,7 @@
 package win.bloglt.user.entity;
 
+import java.util.List;
+
 public class Users {
     private Integer userId;
 
@@ -10,6 +12,16 @@ public class Users {
     private String realName;
 
     private Byte userGender;
+
+    private List<Role> roleList;
+
+    public List<Role> getRoleList() {
+        return roleList;
+    }
+
+    public void setRoleList(List<Role> roleList) {
+        this.roleList = roleList;
+    }
 
     public Integer getUserId() {
         return userId;
