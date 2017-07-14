@@ -14,10 +14,12 @@ import javax.servlet.ServletException;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
+import java.io.UnsupportedEncodingException;
+import java.security.NoSuchAlgorithmException;
 
 /**
  * Created by tryu on 2017/7/13.
- * 后台文章管理的登陆界面
+ * 后台文章管理的登陆界面,已经登录时再次访问此页面的逻辑暂没添加
  */
 @Controller
 @RequestMapping("backstage")
@@ -40,7 +42,7 @@ public class LoginController {
      */
     @RequestMapping("/login")
     @ResponseBody
-    public String loginCheck(HttpServletRequest req, HttpServletResponse resp) {
+    public String loginCheck(HttpServletRequest req) {
         String userName = req.getParameter("uname");
         String password = req.getParameter("password");
 
@@ -53,7 +55,6 @@ public class LoginController {
             e.printStackTrace();
         }
         return "failed";
-
     }
 
 }

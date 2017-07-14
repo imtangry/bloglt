@@ -1,0 +1,234 @@
+.background, .mask {
+    left: 0;
+    right: 0;
+    top: 0;
+    bottom: 0;
+    position: absolute
+}
+
+.background, .main-container, .mask {
+    position: absolute
+}
+
+body {
+    margin: 0;
+    padding: 0;
+    font-family: "Avenir Next", Helvetica, Arial, "Lantinghei SC", "Microsoft YaHei", sans-serif
+}
+
+.background {
+    background-image: -webkit-gradient(linear, left top, right bottom, from(#836FFF), to(#CAE1FF));
+    background-image: -webkit-linear-gradient(left top, #836FFF, #CAE1FF);
+    background-image: linear-gradient(left top, #836FFF, #CAE1FF)
+}
+
+.mask {
+    background: #000;
+    opacity: .7
+}
+
+.main-container {
+    width: 620px;
+    height: 540px;
+    top: 50%;
+    margin-top: -270px;
+    left: 50%;
+    margin-left: -310px;
+    background: #fff;
+    -webkit-border-radius: 4px;
+    -webkit-box-shadow: 0 2px 2px 0 rgba(0, 0, 0, .14), 0 3px 1px -2px rgba(0, 0, 0, .2), 0 1px 5px 0 rgba(0, 0, 0, .12);
+    box-shadow: 0 2px 2px 0 rgba(0, 0, 0, .14), 0 3px 1px -2px rgba(0, 0, 0, .2), 0 1px 5px 0 rgba(0, 0, 0, .12);
+    overflow: hidden;
+    border-radius: 4px
+}
+
+.main-container .head {
+    position: relative;
+    width: 100%;
+    height: 70%;
+    background: url(/bloglt-static-file/img/login_bg.jpg) center no-repeat;
+    background-size: auto 100%;
+    -webkit-border-radius: 4px 4px 0 0;
+    border-radius: 4px 4px 0 0;
+    text-align: center;
+    -webkit-box-shadow: inset 0 -70px 100px -50px rgba(0, 0, 0, .5);
+    box-shadow: inset 0 -70px 100px -50px rgba(0, 0, 0, .5)
+}
+
+.main-container .head .head-container {
+    width: 100%;
+    position: absolute;
+    bottom: 10px
+}
+
+.main-container .head .head-container h1 {
+    margin: 0;
+    font-size: 40px;
+    letter-spacing: .5px;
+    color: #fff;
+    text-shadow: 1px 1px 1px rgba(0, 0, 0, .7);
+    font-weight: 700
+}
+
+.main-container .head .head-container h1 span {
+    opacity: .2
+}
+
+.main-container .body {
+    width: 100%;
+    height: 30%;
+    text-align: center;
+    padding: 10px 0;
+    -webkit-box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    box-sizing: border-box;
+    -webkit-border-radius: 0 0 4px 4px;
+    border-radius: 0 0 4px 4px
+}
+
+.main-container .body p {
+    font-size: 25px;
+    margin: 36px;
+}
+
+.main-container .body i {
+    display: inline-block;
+    font-size: 16px;
+    width: 42px;
+    height: 42px;
+    line-height: 42px;
+    -webkit-border-radius: 42px;
+    border-radius: 42px;
+    color: rgba(0, 0, 0, .5);
+    background-color: rgba(0, 0, 0, .1);
+    -webkit-transition: all .3s ease-in-out;
+    transition: all .3s ease-in-out;
+    font-style: normal
+}
+
+.main-container .body i:hover {
+    background-color: #f76b1d;
+    color: #fff
+}
+
+@-webkit-keyframes shake {
+    from, to {
+        -webkit-transform: translate3d(0, 0, 0);
+        transform: translate3d(0, 0, 0)
+    }
+    10%, 30%, 50%, 70%, 90% {
+        -webkit-transform: translate3d(-10px, 0, 0);
+        transform: translate3d(-10px, 0, 0)
+    }
+    20%, 40%, 60%, 80% {
+        -webkit-transform: translate3d(10px, 0, 0);
+        transform: translate3d(10px, 0, 0)
+    }
+}
+
+@keyframes shake {
+    from, to {
+        -webkit-transform: translate3d(0, 0, 0);
+        transform: translate3d(0, 0, 0)
+    }
+    10%, 30%, 50%, 70%, 90% {
+        -webkit-transform: translate3d(-10px, 0, 0);
+        transform: translate3d(-10px, 0, 0)
+    }
+    20%, 40%, 60%, 80% {
+        -webkit-transform: translate3d(10px, 0, 0);
+        transform: translate3d(10px, 0, 0)
+    }
+}
+
+.shake {
+    -webkit-animation: shake .7s ease-out;
+    animation: shake .7s ease-out
+}
+
+.btn {
+    border: none;
+    border-radius: 0;
+    border-top: 1px solid #eee;
+    transition: .3s border-top linear, .3s background linear, .2s color linear;
+    width: 50%;
+}
+
+.list-group-item {
+    transition: .3s border-top linear, .3s background linear, .2s color linear;
+}
+
+.list-group-item:first-child {
+    border-top-left-radius: 0px;
+    border-top-right-radius: 0px;
+}
+
+.list-group-item:last-child {
+    border-bottom-right-radius: 0px;
+    border-bottom-left-radius: 0px;
+}
+
+.list-group-item {
+    border: none;
+    border-top: 1px solid #eee;
+    border-bottom: 1px solid #eee;
+}
+
+.btn-default:hover {
+    border-color: #eee;
+    background-color: #f5f5f5
+}
+
+.btn-group, .btn-group-vertical {
+    width: 100%;
+}
+
+/*自定义扩展*/
+.wrongValue {
+    color: #f71752;
+    visibility: hidden;
+}
+
+.login-box {
+    width: 80%;
+    margin: 80px auto 0;
+}
+
+.login-form-control {
+    font-size: 22px;
+    height: 50px;
+}
+
+.login-form-control-feedback {
+    height: 50px;
+    width: 50px;
+    line-height: 50px;
+}
+
+.login-input-div {
+    font-size: 22px;
+    height: 110px;
+    margin-top: 30px;
+}
+
+.login-remember-div {
+    padding-left: 60%;
+}
+
+.login-button {
+    font-size: 22px;
+    width: 100%;
+    height: 50px;
+    border-radius: 4px
+}
+
+.login-remember {
+    height: 30px;
+    font-size: 22px;
+}
+
+#wrongInfo {
+    visibility: hidden;
+    font-size: 14px;
+    margin: 0 auto;
+}
