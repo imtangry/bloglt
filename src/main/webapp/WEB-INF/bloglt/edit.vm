@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="UTF-8">
+    <title>日志</title>
+    <link rel="stylesheet" type="text/css" href="/bloglt-static-file/css/reset.css"/>
+    <link rel="stylesheet" type="text/css" href="/bloglt-static-file/css/paint.css"/>
+    <script src="/bloglt-static-file/write/ckeditor.js"></script>
+
+</head>
+
+<body>
+<div id="top">
+    <div class="top-text">
+        编辑日志
+    </div>
+    <button id="update-article" class="submit-article">提交</button>
+</div>
+<div id="editor">
+    <form id="form-article" action="/article/editandsave" method="post">
+        <textarea name="articleTitle" id="title" rows="1" maxlength="50">$Article.articleTitle</textarea>
+        <textarea name="content" id="ckeditor" rows="50"></textarea>
+        <script>
+            // Replace the <textarea id="editor1"> with a CKEditor
+            // instance, using default configuration.
+            CKEDITOR.replace('ckeditor', {});
+
+        </script>
+
+        <input type="text" name="contentShort" id="contentShort" style="display: none">
+        <input type="text" name="articleId" value="$id" style="display: none">
+    </form>
+</div>
+<div id="tempdata" style="display: none">$Article.content</div>
+<script src="/bloglt-static-file/js/jquery-3.2.1.min.js"></script>
+<script>
+    $("#update-article").click(function () {
+        var text = CKEDITOR.instances.ckeditor.document.getBody().getText();
+        if (text.length > 200) {
+            $('#contentShort').val(text.substr(0, 200));
+        } else {
+            $('#contentShort').val(text);
+        }
+        $("#form-article").submit();
+    });
+</script>
+<script>
+    var srctext =$("#tempdata").html();
+</script>
+<script type="text/javascript" defer="defer" src="/bloglt-static-file/js/load-content.js"></script>
+</body>
+</html>

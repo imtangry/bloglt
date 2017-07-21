@@ -1,33 +1,48 @@
 <!DOCTYPE html>
 <html>
 
-	<head>
-		<meta charset="UTF-8">
-		<title>日志</title>
-		<link rel="stylesheet" type="text/css" href="/bloglt-static-file/css/reset.css" />
-		<link rel="stylesheet" type="text/css" href="/bloglt-static-file/css/paint.css" />
-		<script src="/bloglt-static-file/write/ckeditor.js"></script>
-	</head>
+<head>
+    <meta charset="UTF-8">
+    <title>日志</title>
+    <link rel="stylesheet" type="text/css" href="/bloglt-static-file/css/reset.css"/>
+    <link rel="stylesheet" type="text/css" href="/bloglt-static-file/css/paint.css"/>
+    <script src="/bloglt-static-file/write/ckeditor.js"></script>
 
-	<body>
-		<div id="top">
-		
-			
-		</div>
-		<div id="editor">
-			<form>
-				<textarea name="title" id="title" rows="1" placeholder="添加标题" maxlength="50"></textarea>
-				<textarea name="ckeditor" id="ckeditor" rows="10" cols="80"> </textarea>
-				<script>
-					// Replace the <textarea id="editor1"> with a CKEditor
-					// instance, using default configuration.
-					CKEDITOR.replace('ckeditor',{
-						uiColor:'#ffffff'
-						
-					});
-				</script>
-			</form>
-		</div>
-	</body>
+</head>
 
+<body>
+<div id="top">
+    <div class="top-text">
+        写日志
+    </div>
+    <button class="submit-article">提交</button>
+</div>
+<div id="editor">
+    <form id="form-article" action="/article/save" method="post">
+        <textarea name="articleTitle" id="title" rows="1" placeholder="添加标题" maxlength="50"></textarea>
+        <textarea name="content" id="ckeditor" rows="50"></textarea>
+        <script>
+            // Replace the <textarea id="editor1"> with a CKEditor
+            // instance, using default configuration.
+            CKEDITOR.replace('ckeditor', {});
+        </script>
+        <input type="text" name="articleDate" id="articleDate" style="display: none">
+        <input type="text" name="contentShort" id="contentShort" style="display: none">
+    </form>
+</div>
+<script src="/bloglt-static-file/js/jquery-3.2.1.min.js"></script>
+<script>
+    $(".submit-article").click(function () {
+        var first_submit_time = new Date();
+        var text = CKEDITOR.instances.ckeditor.document.getBody().getText();
+        if (text.length > 200) {
+            $('#contentShort').val(text.substr(0, 200));
+        } else {
+            $('#contentShort').val(text);
+        }
+        $("#articleDate").val(first_submit_time);
+        $("#form-article").submit();
+    });
+</script>
+</body>
 </html>

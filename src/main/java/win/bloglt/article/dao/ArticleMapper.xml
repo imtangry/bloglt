@@ -1,107 +1,142 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
-<mapper namespace="win.bloglt.article.dao.ArticleMapper" >
-  <resultMap id="BaseResultMap" type="win.bloglt.article.entity.Article" >
-    <id column="article_id" property="articleId" jdbcType="INTEGER" />
-    <result column="article_title" property="articleTitle" jdbcType="VARCHAR" />
-    <result column="article_date" property="articleDate" jdbcType="TIMESTAMP" />
-    <result column="image_url" property="imageUrl" jdbcType="VARCHAR" />
-    <result column="article_author_id" property="articleAuthorId" jdbcType="INTEGER" />
-  </resultMap>
-  <resultMap id="ResultMapWithBLOBs" type="win.bloglt.article.entity.Article" extends="BaseResultMap" >
-    <result column="content" property="content" jdbcType="LONGVARCHAR" />
-  </resultMap>
-  <sql id="Base_Column_List" >
-    article_id, article_title, article_date, image_url, article_author_id
+<mapper namespace="win.bloglt.article.dao.ArticleMapper">
+    <resultMap id="BaseResultMap" type="win.bloglt.article.entity.Article">
+        <id column="article_id" property="articleId" jdbcType="INTEGER"/>
+        <result column="article_title" property="articleTitle" jdbcType="VARCHAR"/>
+        <result column="article_date" property="articleDate" jdbcType="TIMESTAMP"/>
+        <result column="content_short" property="contentShort" jdbcType="VARCHAR"/>
+        <result column="image_url" property="imageUrl" jdbcType="VARCHAR"/>
+        <result column="article_author_id" property="articleAuthorId" jdbcType="INTEGER"/>
+    </resultMap>
+    <resultMap id="ResultMapWithBLOBs" type="win.bloglt.article.entity.Article" extends="BaseResultMap">
+        <result column="content" property="content" jdbcType="LONGVARCHAR"/>
+    </resultMap>
+    <sql id="Base_Column_List">
+    article_id, article_title, article_date, content_short, image_url, article_author_id
   </sql>
-  <sql id="Blob_Column_List" >
+    <sql id="Blob_Column_List">
     content
   </sql>
-  <select id="selectByPrimaryKey" resultMap="ResultMapWithBLOBs" parameterType="java.lang.Integer" >
-    select 
-    <include refid="Base_Column_List" />
-    ,
-    <include refid="Blob_Column_List" />
-    from article
-    where article_id = #{articleId,jdbcType=INTEGER}
-  </select>
-  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer" >
+
+    <select id="selectIndexArticle" resultMap="ResultMapWithBLOBs">
+        select
+        <include refid="Base_Column_List"/>
+        ,
+        <include refid="Blob_Column_List"/>
+        from article
+        ORDER BY article_id DESC limit 5
+    </select>
+
+
+    <select id="selectQueryArticle" resultMap="ResultMapWithBLOBs">
+        select
+        <include refid="Base_Column_List"/>,
+        <include refid="Blob_Column_List"/>
+        from article
+        where article_author_id = #{articleAuthorId,jdbcType=INTEGER}
+        <if test="title != null">
+            AND article_title LIKE #{title,jdbcType=VARCHAR}
+        </if>
+        ORDER BY article_id DESC limit #{startRow},#{queryRow}
+    </select>
+
+    <select id="getRecord" resultType="Integer">
+        select count(0) from article
+        where article_author_id = #{articleAuthorId,jdbcType=INTEGER}
+        <if test="title != null">
+            AND article_title LIKE #{title,jdbcType=VARCHAR}
+        </if>
+    </select>
+
+    <select id="selectByPrimaryKey" resultMap="ResultMapWithBLOBs" parameterType="java.lang.Integer">
+        select
+        <include refid="Base_Column_List"/>
+        ,
+        <include refid="Blob_Column_List"/>
+        from article
+        where article_id = #{articleId,jdbcType=INTEGER}
+    </select>
+    <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
     delete from article
     where article_id = #{articleId,jdbcType=INTEGER}
   </delete>
-  <insert id="insert" parameterType="win.bloglt.article.entity.Article" >
-    insert into article (article_id, article_title, article_date, 
+    <insert id="insert" parameterType="win.bloglt.article.entity.Article">
+    insert into article (article_id, article_title, article_date, content_short
       image_url, article_author_id, content
       )
-    values (#{articleId,jdbcType=INTEGER}, #{articleTitle,jdbcType=VARCHAR}, #{articleDate,jdbcType=TIMESTAMP}, 
+    values (#{articleId,jdbcType=INTEGER}, #{articleTitle,jdbcType=VARCHAR}, #{articleDate,jdbcType=TIMESTAMP}, #{contentShort,jdbcType=VARCHAR},
       #{imageUrl,jdbcType=VARCHAR}, #{articleAuthorId,jdbcType=INTEGER}, #{content,jdbcType=LONGVARCHAR}
       )
   </insert>
-  <insert id="insertSelective" parameterType="win.bloglt.article.entity.Article" >
-    insert into article
-    <trim prefix="(" suffix=")" suffixOverrides="," >
-      <if test="articleId != null" >
-        article_id,
-      </if>
-      <if test="articleTitle != null" >
-        article_title,
-      </if>
-      <if test="articleDate != null" >
-        article_date,
-      </if>
-      <if test="imageUrl != null" >
-        image_url,
-      </if>
-      <if test="articleAuthorId != null" >
-        article_author_id,
-      </if>
-      <if test="content != null" >
-        content,
-      </if>
-    </trim>
-    <trim prefix="values (" suffix=")" suffixOverrides="," >
-      <if test="articleId != null" >
-        #{articleId,jdbcType=INTEGER},
-      </if>
-      <if test="articleTitle != null" >
-        #{articleTitle,jdbcType=VARCHAR},
-      </if>
-      <if test="articleDate != null" >
-        #{articleDate,jdbcType=TIMESTAMP},
-      </if>
-      <if test="imageUrl != null" >
-        #{imageUrl,jdbcType=VARCHAR},
-      </if>
-      <if test="articleAuthorId != null" >
-        #{articleAuthorId,jdbcType=INTEGER},
-      </if>
-      <if test="content != null" >
-        #{content,jdbcType=LONGVARCHAR},
-      </if>
-    </trim>
-  </insert>
-  <update id="updateByPrimaryKeySelective" parameterType="win.bloglt.article.entity.Article" >
-    update article
-    <set >
-      <if test="articleTitle != null" >
-        article_title = #{articleTitle,jdbcType=VARCHAR},
-      </if>
-      <if test="articleDate != null" >
-        article_date = #{articleDate,jdbcType=TIMESTAMP},
-      </if>
-      <if test="imageUrl != null" >
-        image_url = #{imageUrl,jdbcType=VARCHAR},
-      </if>
-      <if test="articleAuthorId != null" >
-        article_author_id = #{articleAuthorId,jdbcType=INTEGER},
-      </if>
-      <if test="content != null" >
-        content = #{content,jdbcType=LONGVARCHAR},
-      </if>
-    </set>
-    where article_id = #{articleId,jdbcType=INTEGER}
-  </update>
-  <update id="updateByPrimaryKeyWithBLOBs" parameterType="win.bloglt.article.entity.Article" >
+    <insert id="insertSelective" parameterType="win.bloglt.article.entity.Article">
+        insert into article
+        <trim prefix="(" suffix=")" suffixOverrides=",">
+            <if test="articleId != null">
+                article_id,
+            </if>
+            <if test="articleTitle != null">
+                article_title,
+            </if>
+            <if test="articleDate != null">
+                article_date,
+            </if>
+            <if test="imageUrl != null">
+                image_url,
+            </if>
+            <if test="articleAuthorId != null">
+                article_author_id,
+            </if>
+            <if test="content != null">
+                content,
+            </if>
+        </trim>
+        <trim prefix="values (" suffix=")" suffixOverrides=",">
+            <if test="articleId != null">
+                #{articleId,jdbcType=INTEGER},
+            </if>
+            <if test="articleTitle != null">
+                #{articleTitle,jdbcType=VARCHAR},
+            </if>
+            <if test="articleDate != null">
+                #{articleDate,jdbcType=TIMESTAMP},
+            </if>
+            <if test="imageUrl != null">
+                #{imageUrl,jdbcType=VARCHAR},
+            </if>
+            <if test="articleAuthorId != null">
+                #{articleAuthorId,jdbcType=INTEGER},
+            </if>
+            <if test="content != null">
+                #{content,jdbcType=LONGVARCHAR},
+            </if>
+        </trim>
+    </insert>
+    <update id="updateByPrimaryKeySelective" parameterType="win.bloglt.article.entity.Article">
+        update article
+        <set>
+            <if test="articleTitle != null">
+                article_title = #{articleTitle,jdbcType=VARCHAR},
+            </if>
+            <if test="articleDate != null">
+                article_date = #{articleDate,jdbcType=TIMESTAMP},
+            </if>
+            <if test="contentShort != null">
+                content_short = #{contentShort,jdbcType=VARCHAR},
+            </if>
+            <if test="imageUrl != null">
+                image_url = #{imageUrl,jdbcType=VARCHAR},
+            </if>
+            <if test="articleAuthorId != null">
+                article_author_id = #{articleAuthorId,jdbcType=INTEGER},
+            </if>
+            <if test="content != null">
+                content = #{content,jdbcType=LONGVARCHAR},
+            </if>
+        </set>
+        where article_id = #{articleId,jdbcType=INTEGER}
+    </update>
+    <update id="updateByPrimaryKeyWithBLOBs" parameterType="win.bloglt.article.entity.Article">
     update article
     set article_title = #{articleTitle,jdbcType=VARCHAR},
       article_date = #{articleDate,jdbcType=TIMESTAMP},
@@ -110,7 +145,7 @@
       content = #{content,jdbcType=LONGVARCHAR}
     where article_id = #{articleId,jdbcType=INTEGER}
   </update>
-  <update id="updateByPrimaryKey" parameterType="win.bloglt.article.entity.Article" >
+    <update id="updateByPrimaryKey" parameterType="win.bloglt.article.entity.Article">
     update article
     set article_title = #{articleTitle,jdbcType=VARCHAR},
       article_date = #{articleDate,jdbcType=TIMESTAMP},

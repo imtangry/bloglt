@@ -15,6 +15,16 @@ public class Article {
 
     private String content;
 
+    private String contentShort;
+
+    public String getContentShort() {
+        return contentShort;
+    }
+
+    public void setContentShort(String contentShort) {
+        this.contentShort = contentShort;
+    }
+
     public Integer getArticleId() {
         return articleId;
     }

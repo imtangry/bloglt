@@ -1,21 +1,44 @@
 #top {
-	width: 100%;
-	height: 50px;
-	background: #E4B9B9;
+    width: 100%;
+    height: 50px;
+    background: #f8f8f8;
+    margin-bottom: 20px;
+    padding: 0 20px;
+}
+
+.top-text {
+    padding-right: 20px;
+    border-right: solid 1px #666666;
+    float: left;
+    height: 100%;
+    width: auto;
+    color: #666666;
+    font: 200 20px/50px "微软雅黑";
+}
+.submit-article{
+    cursor: pointer;
+    display: block;
+    height: 100%;
+    width: auto;
+    padding: 0 20px;
+    border: none;
+    background: #4cae4c;
+    font: 200 20px/50px "微软雅黑";
+    color: #ffffff;
 }
 
 #title {
-	height: 30px;
-	width: 984px;
-	overflow: hidden;
-	font: 600 30px/30px "微软雅黑";
-	color: #444444;
-	padding: 0 20px;
-	
+    resize: none;
+    height: 50px;
+    width: 982px;
+    overflow: hidden;
+    font: 600 30px/50px "微软雅黑";
+    color: #444444;
+    padding: 0 20px;
+
 }
 
 #editor {
-	width: 1024px;
-	height: 640px;
-	margin: 20px auto 0;
+    width: 1024px;
+    margin: 0 auto 0;
 }

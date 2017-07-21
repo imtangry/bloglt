@@ -9,13 +9,8 @@ import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 import win.bloglt.user.service.UserService;
-
-import javax.servlet.ServletException;
 import javax.servlet.http.HttpServletRequest;
-import javax.servlet.http.HttpServletResponse;
-import java.io.IOException;
-import java.io.UnsupportedEncodingException;
-import java.security.NoSuchAlgorithmException;
+import javax.servlet.http.HttpSession;
 
 /**
  * Created by tryu on 2017/7/13.
@@ -57,5 +52,14 @@ public class LoginController {
         return "failed";
     }
 
+    /**
+     * Create by tryu 2017/7/18 17:22
+     * 退出登录
+     */
+    @RequestMapping("/logout")
+    public String logout(HttpSession session) {
+        session.invalidate();
+        return "/";
+    }
 }
 
