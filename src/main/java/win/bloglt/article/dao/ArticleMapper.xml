@@ -8,12 +8,13 @@
         <result column="content_short" property="contentShort" jdbcType="VARCHAR"/>
         <result column="image_url" property="imageUrl" jdbcType="VARCHAR"/>
         <result column="article_author_id" property="articleAuthorId" jdbcType="INTEGER"/>
+        <result column="views" property="views" jdbcType="INTEGER"/>
     </resultMap>
     <resultMap id="ResultMapWithBLOBs" type="win.bloglt.article.entity.Article" extends="BaseResultMap">
         <result column="content" property="content" jdbcType="LONGVARCHAR"/>
     </resultMap>
     <sql id="Base_Column_List">
-    article_id, article_title, article_date, content_short, image_url, article_author_id
+    article_id, article_title, article_date, content_short, image_url, article_author_id, views
   </sql>
     <sql id="Blob_Column_List">
     content

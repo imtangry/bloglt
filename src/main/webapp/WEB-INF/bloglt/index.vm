@@ -72,7 +72,7 @@
     #foreach($article in $articleList)
        <div class="article">
            <h1 class="article_title"><a href="javascript:void(0)" >$article.articleTitle</a></h1>
-           <div class="article_date">日期：$date.format("yyyy-MM-dd HH:mm:ss",$article.articleDate)</div>
+           <div class="article_date">日期：$date.format("yyyy年MM月dd日 HH:mm:ss",$article.articleDate) | 已阅：$article.views 次 | 评论：暂未开通</div>
            <div id="full-data" class="article_condent" style="display: none">$article.content</div>
            <div id="short-data" class="article_condent">$article.contentShort</div>
            <a class="article_more" href="/readarticle?articleId=$article.articleId">阅读全文>></a>

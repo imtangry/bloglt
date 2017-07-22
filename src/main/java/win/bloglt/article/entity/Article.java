@@ -17,6 +17,16 @@ public class Article {
 
     private String contentShort;
 
+    private int views;
+
+    public int getViews() {
+        return views;
+    }
+
+    public void setViews(int views) {
+        this.views = views;
+    }
+
     public String getContentShort() {
         return contentShort;
     }
