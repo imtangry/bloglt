@@ -22,4 +22,6 @@ public interface ArticleService {
     Pages getQueryArticle(QueryArticle queryArticle);
 
     int saveEditedArticle(Article article);
+
+    List<Article> loadMoreArticle(int articleId);
 }

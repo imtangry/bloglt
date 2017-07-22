@@ -13,7 +13,7 @@
     height: 100%;
     width: auto;
     color: #666666;
-    font: 200 20px/50px "微软雅黑";
+    font: 200 20px/50px "Microsoft YaHei";
 }
 .submit-article{
     cursor: pointer;
@@ -23,7 +23,7 @@
     padding: 0 20px;
     border: none;
     background: #4cae4c;
-    font: 200 20px/50px "微软雅黑";
+    font: 200 20px/50px "Microsoft YaHei";
     color: #ffffff;
 }
 
@@ -32,7 +32,7 @@
     height: 50px;
     width: 982px;
     overflow: hidden;
-    font: 600 30px/50px "微软雅黑";
+    font: 600 30px/50px "Microsoft YaHei";
     color: #444444;
     padding: 0 20px;
 

@@ -28,6 +28,15 @@
         ORDER BY article_id DESC limit 5
     </select>
 
+    <select id="selectIndexMoreArticle" resultMap="ResultMapWithBLOBs">
+        select
+        <include refid="Base_Column_List"/>
+        ,
+        <include refid="Blob_Column_List"/>
+        from article
+        WHERE article_id BETWEEN 0 AND (#{articleId,jdbcType=INTEGER}-1)
+        ORDER BY article_id DESC limit 5
+    </select>
 
     <select id="selectQueryArticle" resultMap="ResultMapWithBLOBs">
         select

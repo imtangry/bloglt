@@ -23,6 +23,8 @@ public interface ArticleMapper {
 
     List<Article> selectIndexArticle();
 
+    List<Article> selectIndexMoreArticle(Integer articleId);
+
     List<Article> selectQueryArticle(QueryArticle queryArticle);
 
     int getRecord(QueryArticle queryArticle);

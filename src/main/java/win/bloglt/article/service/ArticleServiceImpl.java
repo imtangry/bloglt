@@ -71,4 +71,13 @@ public class ArticleServiceImpl implements ArticleService {
     public int saveEditedArticle(Article article) {
         return articleMapper.updateByPrimaryKeySelective(article);
     }
+
+    /**
+    *Create by Trye 2017/7/22 9:27
+    *首页加载更多文章功能
+    */
+    @Override
+    public List<Article> loadMoreArticle(int articleId) {
+        return articleMapper.selectIndexMoreArticle(articleId);
+    }
 }
