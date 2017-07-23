@@ -1,9 +1,12 @@
 /*********** 头部公共的CSS开始**************/
+
 /**************头部开始********************/
 #head {
+    position:absolute;
     height: 40px;
     width: 100%;
     background: #333333;
+    opacity: 0.8;
 }
 
 #head_content {
@@ -54,7 +57,48 @@
     background: #000000;
     color: #FFFFFF;
 }
+/*********** 头部背景和个人信息***************/
+
+.top{
+    position: relative;
+    height: 400px;
+    background-image: url("/bloglt-static-file/img/top_img.jpg");
+    min-width: 1024px;
+    background-size: cover;
+    background-position: center 50%;
+    background-repeat: no-repeat;
+}
+
+#my-info{
+    position: relative;
+    top:300px;
+    height: 120px;
+    background-color:rgba(55,55,55,0.5);
+    margin: 0 auto;
+}
+.head-img{
+    cursor: pointer;
+    position: relative;
+    top:-40px;
+    width: 100px;
+    height: 100px;
+    margin: 0 auto;
+    background-image: url("/bloglt-static-file/img/head-img.jpg");
+    border-radius: 100%;
+}
+#my-info p{
+    display: block;
+    position: relative;
+    top:-30px;
+    color: #FFFFFF;
+    text-align: center;
+}
+
+
 /*********** 头部公共的CSS结束***************/
+
+
+
 
 /*********** 脚步部公共的CSS开始***************/
 #footer {
@@ -76,4 +120,61 @@
 .default-content{
     width: 1024px;
     margin: 0 auto;
+}
+
+
+
+
+/*********************其他*************************/
+ .head-img:hover {
+    -webkit-animation: tada 1s .2s ease both;
+    -moz-animation: tada 1s .2s ease both;
+}
+
+@-webkit-keyframes tada {
+    0% {
+        -webkit-transform: scale(1);
+    }
+    10%,
+    20% {
+        -webkit-transform: scale(0.9) rotate(-3deg);
+    }
+    30%,
+    50%,
+    70%,
+    90% {
+        -webkit-transform: scale(1.1) rotate(3deg);
+    }
+    40%,
+    60%,
+    80% {
+        -webkit-transform: scale(1.1) rotate(-3deg);
+    }
+    100% {
+        -webkit-transform: scale(1) rotate(0);
+    }
+}
+
+@-moz-keyframes tada {
+    0% {
+        -moz-transform: scale(1);
+    }
+    10%,
+    20% {
+        -moz-transform: scale(0.9) rotate(-3deg);
+    }
+    30%,
+    50%,
+    70%,
+    90% {
+        -moz-transform: scale(1.1) rotate(3deg);
+    }
+    40%,
+    60%,
+    80% {
+        -moz-transform: scale(1.1) rotate(-3deg);
+    }
+    100% {
+        -moz-transform: scale(1) rotate(0);
+    }
 }

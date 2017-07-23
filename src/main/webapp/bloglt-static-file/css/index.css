@@ -1,10 +1,8 @@
-/**************头部图片导航********************/
 
-#top_slide {
-    margin: 20px auto 0;
-    width: 1024px;
-    height: 320px;
-}
+
+
+
+
 
 /**************正文部分********************/
 
@@ -23,7 +21,7 @@
 
 .article_title {
     display: block;
-    padding: 20px 0;
+    padding: 10px 0 20px;
     text-align: center;
 }
 
@@ -39,6 +37,7 @@
     margin: -20px auto 20px;
     height: 20px;
     font: 300 14px/20px "Microsoft YaHei";
+    color: #555555;
 }
 
 .article_condent {
@@ -49,7 +48,7 @@
     display: block;
     position: relative;
     float: right;
-    height: 28px;
+    height: 20px;
     right: 40px;
     margin-bottom: 20px;
     padding: 4px 10px;
@@ -62,7 +61,7 @@
 .load-more{
     text-align: center;
     display: block;
-    height: 28px;
+    height: 20px;
     width:640px;
     margin: -20px auto 20px;
     padding: 4px 10px;
