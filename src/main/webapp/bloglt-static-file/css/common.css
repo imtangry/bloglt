@@ -126,6 +126,12 @@
 
 
 /*********************其他*************************/
+p{
+    padding:5px 0;
+    letter-spacing:0.01em;
+}
+
+
  .head-img:hover {
     -webkit-animation: tada 1s .2s ease both;
     -moz-animation: tada 1s .2s ease both;

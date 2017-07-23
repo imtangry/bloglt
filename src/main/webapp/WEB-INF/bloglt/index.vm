@@ -7,7 +7,9 @@
     <link rel="stylesheet" type="text/css" href="/bloglt-static-file/css/common.css"/>
     <link rel="stylesheet" type="text/css" href="/bloglt-static-file/css/index.css"/>
     <link rel="stylesheet" type="text/css" href="/bloglt-static-file/css/reset.css"/>
+    <link rel="stylesheet" type="text/css" href="/bloglt-static-file/css/default.css"/>
     <script src="http://libs.baidu.com/jquery/2.0.0/jquery.min.js"></script>
+    <script src="/bloglt-static-file/js/highlight.pack.js"></script>
 </head>
 
 <body>
@@ -55,7 +57,7 @@
                 | 评论：暂未开通
             </div>
             <div class="article_condent full-data" style="display: none">$article.content</div>
-            <div class="article_condent short-data">$article.contentShort</div>
+            <div class="article_condent short-data"></div>
             <a class="article_more" href="/readarticle?articleId=$article.articleId">阅读全文>></a>
             <div style="clear:both"></div>
         </div>
@@ -67,6 +69,7 @@
 <div id="footer">
     <div class="footer-content"></div>
 </div>
+<script>hljs.initHighlightingOnLoad();</script>
 <script src="/bloglt-static-file/js/load_more_indexArticle.js"></script>
 </body>
 </html>
