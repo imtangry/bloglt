@@ -3,15 +3,16 @@
  * For licensing, see LICENSE.md or http://ckeditor.com/license
  */
 
-CKEDITOR.editorConfig = function( config ) {
-	// Define changes to default configuration here. For example:
-	// config.language = 'fr';
-	// config.uiColor = '#AADC6E';
+CKEDITOR.editorConfig = function (config) {
+    // Define changes to default configuration here. For example:
+    // config.language = 'fr';
+    // config.uiColor = '#AADC6E';
 
     config.height = 500;
 
     config.removeButtons = 'About,Print,Language,BidiRtl,BidiLtr';
-
+    //表情图片源 ，CKEDITOR.basePath指http://localhost:8080/.......
+    smiley_path : CKEDITOR.basePath + 'plugins/smiley/images/';
     config.smiley_images = [
         't_0001.gif',
         't_0002.gif',
