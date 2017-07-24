@@ -67,8 +67,19 @@ $(".load-more").click(function () {
             url: "/loadmore",
             data: param,
             success: function (data) {
-                var data_length=$(data)[0].getElementsByClassName("short-data").length;
+                //这里有问题，get(index)或者[index]获得的是某一个一级dom节点,后端返回的html代码转为jq对象后还包括空节点。
+                //投机取巧认为返回文章数量是长度+1除2后的值,但是为了保险起见还是一个个遍历把。
+                // var data_length=$(data)[0].getElementsByClassName("short-data").length;
                 // console.log(data_length)
+                var jqObject=$(data);
+                var data_length=0;
+                var origin_data_length=jqObject.length;
+                for(var i=0;i<origin_data_length;++i){
+                    if(jqObject[i].tagName=='DIV'){
+                        ++data_length;
+                    }
+                }
+                console.log(data_length);
                 if (data_length < 5) {
                     setTimeout(function () {
                         $("#body").append(data);
