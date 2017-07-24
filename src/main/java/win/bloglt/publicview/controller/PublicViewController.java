@@ -1,6 +1,7 @@
 package win.bloglt.publicview.controller;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpRequest;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -8,6 +9,7 @@ import org.springframework.web.bind.annotation.ResponseBody;
 import win.bloglt.article.entity.Article;
 import win.bloglt.article.service.ArticleService;
 
+import javax.servlet.http.HttpServletRequest;
 import java.util.List;
 
 /**
@@ -20,45 +22,53 @@ public class PublicViewController {
     private ArticleService articleService;
 
     /**
-    *Create by tryu 2017/7/11 9:41
-    *进入博客首页的请求
-    */
+     * Create by tryu 2017/7/11 9:41
+     * 进入博客首页的请求
+     */
     @RequestMapping
     public String index(Model model) {
-        List<Article> articleList=articleService.getIndexArticle();
-        model.addAttribute("articleList",articleList);
+        List<Article> articleList = articleService.getIndexArticle();
+        model.addAttribute("articleList", articleList);
         System.out.println("接收到进入博客首页的请求");
         return "index";
     }
-    
+
     /**
-    *Create by Trye 2017/7/21 17:48
-    *进入文章板块,此版块打算作为归档页面，首页充当文章浏览的功能
-    */
+     * Create by Trye 2017/7/21 17:48
+     * 进入文章板块,此版块打算作为归档分类页面，首页可充当文章浏览的功能角色
+     */
     @RequestMapping("article")
-    public String article(){
+    public String article() {
         System.out.println("接受到进入文章页面的请求");
         return "article";
     }
 
     /**
-     *Create by Trye 2017/7/21 17:48
-     *进入文章板块,此版块打算作为归档页面，首页充当文章浏览的功能
+     * Create by Trye 2017/7/21 17:48
+     * 文章的阅读更多,首页点击文章标题
      */
     @RequestMapping("readarticle")
-    public String theArticle(){
+    public String theArticle(Model model, HttpServletRequest request) {
         System.out.println("接受到进入文章页面的请求");
-        return "article";
+        String str = request.getParameter("articleId");
+        if (str == null) {
+            return null;
+        } else {
+            int articleId = Integer.parseInt(str);
+            Article article = articleService.editArticle(articleId);
+            model.addAttribute("article", article);
+            return "article";
+        }
     }
 
     /**
-    *Create by Trye 2017/7/22 9:20
-    *首页加载更多的功能
-    */
+     * Create by Trye 2017/7/22 9:20
+     * 首页加载更多的功能
+     */
     @RequestMapping("loadmore")
-    public String loadMore(Model model,int articleId){
-        List<Article> articleList=articleService.loadMoreArticle(articleId);
-        model.addAttribute("articleList",articleList);
+    public String loadMore(Model model, int articleId) {
+        List<Article> articleList = articleService.loadMoreArticle(articleId);
+        model.addAttribute("articleList", articleList);
         return "loadmore";
     }
 }

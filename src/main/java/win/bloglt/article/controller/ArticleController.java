@@ -110,9 +110,10 @@ public class ArticleController {
      */
     @RequiresPermissions("article:edit")
     @RequestMapping("editandsave")
-    public String editAndSave(Article article) {
+    public String editAndSave(Model model,Article article) {
         int status = articleService.saveEditedArticle(article);
         if (status > 0) {
+            model.addAttribute("article",article);
             return "article";
         } else {
             return "failed";

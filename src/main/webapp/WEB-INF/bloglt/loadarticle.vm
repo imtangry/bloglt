@@ -1,0 +1,8 @@
+<div class="article">
+    <h1 class="article_title"><a href="/readarticle?articleId=$article.articleId">$article.articleTitle</a></h1>
+    <div class="article_date">日期：$date.format("yyyy-MM-dd HH:mm:ss",$article.articleDate)</div>
+    <div class="article_condent full-data" style="display: none">$article.content</div>
+    <div class="article_condent short-data"></div>
+    <a class="article_more" href="/readarticle?articleId=$article.articleId">阅读全文>></a>
+    <div style="clear:both"></div>
+</div>
