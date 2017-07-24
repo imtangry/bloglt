@@ -10,10 +10,13 @@ import win.bloglt.article.entity.Article;
 import win.bloglt.article.service.ArticleService;
 import win.bloglt.article.vo.QueryArticle;
 import win.bloglt.common.pages.Pages;
+import win.bloglt.common.utils.imgUploadUtil;
 import win.bloglt.user.entity.Users;
 
 import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
+import java.io.IOException;
 import java.util.HashMap;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
@@ -76,13 +79,14 @@ public class ArticleController {
     /**
      * Create by tryu 2017/7/16 9:37
      * 测试CKEditor的功能(成功)
-     * 提交新文章的请求
+     * 提交新文章的请求,并设置浏览次数为0
      */
     @RequiresPermissions("article:write")
     @RequestMapping("/save")
     public String showData(Article article, HttpSession session) {
         int articleAuthorId = ((Users) (session.getAttribute("userInfo"))).getUserId();
         article.setArticleAuthorId(articleAuthorId);
+        article.setViews(0);
         int status = articleService.writeArticle(article);
         if (status > 0) {
             return "article";
@@ -100,7 +104,7 @@ public class ArticleController {
     public String editArticle(Model model, int articleId) {
         Article article = articleService.editArticle(articleId);
         model.addAttribute("Article", article);
-        model.addAttribute("id",articleId);
+        model.addAttribute("id", articleId);
         return "edit";
     }
 
@@ -110,13 +114,27 @@ public class ArticleController {
      */
     @RequiresPermissions("article:edit")
     @RequestMapping("editandsave")
-    public String editAndSave(Model model,Article article) {
+    public String editAndSave(Model model, Article article) {
         int status = articleService.saveEditedArticle(article);
         if (status > 0) {
-            model.addAttribute("article",article);
+            model.addAttribute("article", article);
             return "article";
         } else {
             return "failed";
+        }
+    }
+
+    /**
+     * Create by Trye 2017/7/24 15:46
+     * 图片异步上传
+     */
+    @RequestMapping("/img_upload")
+    public void imgUpload(HttpServletRequest request, HttpServletResponse response) {
+        String filePath = "bloglt-static-file/upload_img/";
+        try {
+            imgUploadUtil.ckeditor(request, response, filePath);
+        } catch (IOException e) {
+            e.printStackTrace();
         }
     }
 

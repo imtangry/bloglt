@@ -73,11 +73,20 @@ public class ArticleServiceImpl implements ArticleService {
     }
 
     /**
-    *Create by Trye 2017/7/22 9:27
-    *首页加载更多文章功能
-    */
+     * Create by Trye 2017/7/22 9:27
+     * 首页加载更多文章功能
+     */
     @Override
     public List<Article> loadMoreArticle(int articleId) {
         return articleMapper.selectIndexMoreArticle(articleId);
+    }
+
+    /**
+     * Create by Trye 2017/7/24 19:34
+     * 文章浏览数+1
+     */
+    @Override
+    public int viewsAddOne(int articleId) {
+        return articleMapper.updateViewsByPrimaryKey(articleId);
     }
 }

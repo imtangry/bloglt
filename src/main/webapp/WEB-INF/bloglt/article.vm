@@ -51,7 +51,7 @@
 </div>
 ##此语句成立条件：变量为布尔值时为true,非不二变量且不为null时。
 #if($article)
-<div class="article" style="margin-top: 80px">
+<div class="article">
     <h1 class="article_title"><a href="javascript:void(0)">$article.articleTitle</a></h1>
     <div class="article_date">#if($article.articleDate)
     日期：$date.format("yyyy年MM月dd日 HH:mm:ss",$article.articleDate) |#end 已阅：$article.views 次

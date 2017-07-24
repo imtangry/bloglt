@@ -72,7 +72,8 @@
         <error-code>500</error-code>
         <location>/error/500.html</location>
     </error-page>
-
-
+    <session-config>
+        <session-timeout>1800</session-timeout>
+    </session-config>
 </web-app>
         

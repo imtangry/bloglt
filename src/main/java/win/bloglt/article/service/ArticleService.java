@@ -24,4 +24,6 @@ public interface ArticleService {
     int saveEditedArticle(Article article);
 
     List<Article> loadMoreArticle(int articleId);
+
+    int viewsAddOne(int articleId);
 }

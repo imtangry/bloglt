@@ -55,6 +55,7 @@ public class PublicViewController {
             return null;
         } else {
             int articleId = Integer.parseInt(str);
+            articleService.viewsAddOne(articleId);
             Article article = articleService.editArticle(articleId);
             model.addAttribute("article", article);
             return "article";

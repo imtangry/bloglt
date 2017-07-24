@@ -28,4 +28,6 @@ public interface ArticleMapper {
     List<Article> selectQueryArticle(QueryArticle queryArticle);
 
     int getRecord(QueryArticle queryArticle);
+
+    int updateViewsByPrimaryKey(Integer articleId);
 }

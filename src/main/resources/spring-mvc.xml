@@ -38,6 +38,12 @@
     <context:component-scan base-package="win.bloglt.*.controller"/>
     <mvc:annotation-driven/>
 
+    <bean id="multipartResolver" class="org.springframework.web.multipart.commons.CommonsMultipartResolver">
+        <!--约10MB-->
+        <property name="maxUploadSize" value="10485760"/>
+        <property name="maxInMemorySize" value="4096"/>
+    </bean>
+
     <bean id="velocityConfigurer" class="org.springframework.web.servlet.view.velocity.VelocityConfigurer">
         <property name="resourceLoaderPath" value="/WEB-INF/bloglt"/>
         <property name="velocityProperties">
@@ -51,11 +57,11 @@
         </property>
     </bean>
     <!--<bean class="org.springframework.web.servlet.handler.SimpleMappingExceptionResolver">-->
-        <!--<property name="exceptionMappings">-->
-            <!--<props>-->
-                <!--<prop key="org.apache.shiro.authz.UnauthorizedException">403</prop>-->
-            <!--</props>-->
-        <!--</property>-->
+    <!--<property name="exceptionMappings">-->
+    <!--<props>-->
+    <!--<prop key="org.apache.shiro.authz.UnauthorizedException">403</prop>-->
+    <!--</props>-->
+    <!--</property>-->
     <!--</bean>-->
     <bean class="org.springframework.web.servlet.view.velocity.VelocityViewResolver">
         <property name="suffix" value=".vm"/>
@@ -64,21 +70,6 @@
     </bean>
 
     <mvc:default-servlet-handler/>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 
 </beans>

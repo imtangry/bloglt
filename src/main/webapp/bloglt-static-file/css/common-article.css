@@ -5,15 +5,18 @@
     box-shadow: 2px 4px 4px #999;
     border-radius: 4px;
 }
+
 .article_title {
     padding: 10px 0 20px;
     text-align: center;
 }
+
 .article_title a {
     font-weight: 300;
     margin: 0 auto;
     color: #444;
 }
+
 .article_date {
     text-align: center;
     margin: -20px auto 20px;
@@ -25,3 +28,8 @@
 .article_condent {
     padding: 0 40px 40px 20px;
 }
+
+.article_condent img {
+    max-width: 100%;
+}
+
