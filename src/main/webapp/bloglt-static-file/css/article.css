@@ -5,6 +5,9 @@
 @media screen and (max-device-width: 770px){
     .article{
         width: 100%;
+    }
+}@media screen and (max-device-width: 420px){
+    .article{
         margin-top:0px;
     }
 }
