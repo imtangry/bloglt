@@ -1,58 +1,67 @@
 /*********** 头部公共的CSS开始**************/
 
 /**************头部开始********************/
-#head {
-    position: absolute;
+.head {
+    position: relative;
     height: 40px;
     width: 100%;
 
 }
 
-#head_content {
+.head_content {
     height: 40px;
     width: 100%;
-    background-color: rgba(33, 33, 33, 0.6);
+    /*background-color: rgba(33, 33, 33, 0.6);*/
+    background-color: rgba(255, 255, 255, 0.5);
     margin: 0 auto;
 }
 
 /**************头部LOGO********************/
-#head_content_logo {
+.head_content_logo {
     float: left;
     width: 100px;
     height: 50px;
-    background: #000000;
+    /*background: #000000;*/
+    background: #021c53;
 }
 
 /**************头部导航********************/
-.nav_on {
-    background: #000000;
-}
 
-#head_content_nav {
+
+.head_content_nav {
     display: block;
     float: right;
     height: 40px;
+    width: 35%;
 }
 
-#head_content_nav li {
+.head_content_nav li {
     display: block;
     float: left;
-    margin-left: 10px;
+    width: 25%;
 }
 
-#head_content_nav a {
+.head_content_nav a {
     text-decoration: none;
-    color: #AAAAAA;
+    /*color: #AAAAAA;*/
+    color: #021c53;
     letter-spacing: 4px;
     display: block;
     height: 40px;
-    width: 60px;
     font: 300 16px/40px "microsoft yahei";
     text-align: center;
 }
 
-#head_content_nav a:hover {
-    background: #000000;
+.head_content_nav a:hover {
+    /*background: #000000;*/
+    background: #021c53;
+    color: #FFFFFF;
+}
+
+.head_content_nav .nav_on {
+    /*background: #000000;*/
+    background: #021c53;
+    cursor: default;
     color: #FFFFFF;
 }
 
@@ -60,12 +69,13 @@
 
 .top {
     position: relative;
-    height: 400px;
-    background-image: url("/bloglt-static-file/img/top_img.jpg");
+    height: 450px;
+    background-image: url("/bloglt-static-file/top-img/top_img03.jpg");
     width: 100%;
     background-size: cover;
     background-position: center 50%;
     background-repeat: no-repeat;
+
 }
 
 #my-info {
@@ -99,47 +109,54 @@
 
 /*********** 脚步部公共的CSS开始***************/
 #footer {
-    margin-top: 200px;
+    position: relative;
     width: 100%;
     height: 120px;
     background: #333333;
 }
 
 .footer-content {
-    width: 100%;
-    height: 120px;
+    position: relative;
+    bottom: 0;
+    width: 50%;
+    padding-top: 60px;
+    margin: 0 auto;
+    text-align: center;
+    color: #EEE;
+    font-size: 12px;
     background: #333333;
+}
+.footer-content p{
+    color: #EEE;
+}
+.footer-content a{
+    color: #EEE;
+}
+.footer-content a:hover{
+    color: #00ad9c;
 }
 
 /*********** 脚步部公共的CSS结束***************/
 
 /*********************其他*************************/
-p {
-    padding: 5px 0;
-    letter-spacing: 0.01em;
-    color: #444;
-}
-
-h1, h2, h3, h4, h5, h6 {
-    color: #444;
-}
 
 /*自适应CSS头部*/
 @media screen and (max-device-width: 420px) {
-    #head_content_logo {
+    .head_content_logo {
         display: none;
     }
 
-    #head_content_nav {
+    .head_content_nav {
+        float: left;
         width: 100%;
     }
 
-    #head_content_nav li {
+    .head_content_nav li {
         margin-left: 0;
         width: 25%;
     }
 
-    #head_content_nav a {
+    .head_content_nav a {
         width: 100%;
     }
 

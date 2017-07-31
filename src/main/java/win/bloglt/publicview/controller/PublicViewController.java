@@ -1,5 +1,6 @@
 package win.bloglt.publicview.controller;
 
+import org.apache.shiro.authz.annotation.RequiresPermissions;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpRequest;
 import org.springframework.stereotype.Controller;
@@ -8,8 +9,12 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 import win.bloglt.article.entity.Article;
 import win.bloglt.article.service.ArticleService;
+import win.bloglt.article.vo.QueryArticle;
+import win.bloglt.common.pages.Pages;
+import win.bloglt.user.entity.Users;
 
 import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpSession;
 import java.util.List;
 
 /**
@@ -41,6 +46,17 @@ public class PublicViewController {
     public String article() {
         System.out.println("接受到进入文章页面的请求");
         return "article";
+    }
+
+    /**
+     * Create by Trye 2017/7/19 17:18
+     * 根据前端的查询条件返回文章的json数据
+     */
+    @RequestMapping("articlelist")
+    @ResponseBody
+    public Pages showList(QueryArticle queryArticle) {
+        Pages pages = articleService.getQueryArticle(queryArticle);
+        return pages;
     }
 
     /**

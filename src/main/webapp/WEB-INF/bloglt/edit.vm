@@ -37,8 +37,8 @@
 <script>
     $("#update-article").click(function () {
         var text = CKEDITOR.instances.ckeditor.document.getBody().getText();
-        if (text.length > 200) {
-            $('#contentShort').val(text.substr(0, 200));
+        if (text.length > 100) {
+            $('#contentShort').val(text.substr(0, 100));
         } else {
             $('#contentShort').val(text);
         }

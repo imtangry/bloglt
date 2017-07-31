@@ -5,71 +5,240 @@
     <meta charset="UTF-8">
     <title>
         #if($article)
-        $article.articleTitle
+            $article.articleTitle
         #else
-        文章
+            文章
         #end
     </title>
     <meta name="viewport" content="width=device-width, height=device-height, initial-scale=1.0, user-scalable=yes">
     <link rel="stylesheet" type="text/css" href="/bloglt-static-file/css/common.css"/>
-    <link rel="stylesheet" type="text/css" href="/bloglt-static-file/css/common-article.css"/>
-    <link rel="stylesheet" type="text/css" href="/bloglt-static-file/css/article.css"/>
-    <link rel="stylesheet" type="text/css" href="/bloglt-static-file/css/reset.css"/>
     <link rel="stylesheet" type="text/css" href="/bloglt-static-file/css/default.css"/>
+    #if($article)
+        <link rel="stylesheet" type="text/css" href="/bloglt-static-file/css/common-article.css"/>
+        <link rel="stylesheet" type="text/css" href="/bloglt-static-file/css/article.css"/>
+        <link rel="stylesheet" type="text/css" href="/bloglt-static-file/css/comments.css"/>
+    #else
+        <link rel="stylesheet" type="text/css" href="/bloglt-static-file/css/page.css"/>
+    #end
+    <link href="https://cdn.bootcss.com/font-awesome/4.7.0/css/font-awesome.css" rel="stylesheet">
+    <link rel="stylesheet" type="text/css" href="/bloglt-static-file/css/reset.css"/>
 
     <script src="http://libs.baidu.com/jquery/2.0.0/jquery.min.js"></script>
+    <script src="/bloglt-static-file/js/jqPaginator.min.js"></script>
     <script src="/bloglt-static-file/js/highlight.pack.js"></script>
 </head>
 
 <body>
 
-<div class="top">
-    <div id="head">
-        <div id="head_content">
-            <div id="head_content_logo">
-                <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"
-                     preserveAspectRatio="xMidYMid" width="100" height="50" viewBox="0 0 400 200">
-                    <image xlink:href="data:img/png;base64,iVBORw0KGgoAAAANSUhEUgAAAGIAAAAkCAMAAABFeh9NAAAABGdBTUEAALGPC/xhBQAAACBjSFJNAAB6JgAAgIQAAPoAAACA6AAAdTAAAOpgAAA6mAAAF3CculE8AAACUlBMVEUAAAD///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////8AAAAXIu9ZAAAAxHRSTlMAob6k+f7Y3AEEAwKi5uLl3hdRqr3P2+Tjwp1ZBcodsd9Wt/oal1u1lpWzEBMn4Bu5uFUuZnkoRU01DhRATCosiDBgUoTtpzQm9MMSqXYN2fAHPuh3S/zMfHVcjjwvbrC0kx/O7mitBispzaM27zNzrh6Kci1JglMyVNr9Fhi268TGFSTnIOoKyxkR3dasI/Hy6b9GxQn1evNK1Lr7jdFaDNPJ15wiu6WJZ5APj8dBV3RpMXtlSEQcgbJi7MBrOTqRP+FwoS/qOAAAAAFiS0dEAIgFHUgAAAAJcEhZcwAALiMAAC4jAXilP3YAAANTSURBVEjHzZXnWxNBEMYXJCQYSgSkiCIttBBAMZSgFGmhSBUUpQiWGJqiKCJFAQEhAoKoKEYsiA1s2Hu5P8ybvYTbSw5bcs/jfGDefWeY35XdC7Kzp2MVEjIcKDpEgiIcASH+LxESJ8lqia0REqmUWDm7uLrJ1tgO4e7hudbL1dtH7LvObz1jbYD/87cdYiPFRkAgtoJoGRxiO4ScIiNUMERYeESkCDMUQiGiaKGMNt3GvyFiYmM3mYX9ZhYRB2oLKJUFIj4hMUlNjk3eui0FNiGSSkhEKmUZaSwiHdR2UBlchCITD8nKzjEBNNm5tJGXHxctiy4gERoexA4WUQgXV0SL4hIOorRsuXsnQyivYJaOBfSfXSQingexm0VUZuzZmwWiirOjqsn2GigpORNqSYSSB6Ey37Qiu0LEQfiAu680pw6X62lnP4gDqoNB2DlEIrQph3U6nRK/USpcQ2tddZQlIoWDCASzAZxGUHKEmiA3xyDjiS3g2bQteNQRi027HJkk4ig45eC0gvJB6Bjk4+C0rYQ4geectEC0a051ZONaB4E4TefOLtyFz0w36oEUD4b/3yLwHBWoABbhdAaeSgnuOgs1DeoFaB8Y/QSi6E8Q+FygcyAHWMQgnXOHcOk8lFoxSTQMxgCBkCnUI0woJFyE1hyhB5nDPqgLsO7HpWKglaBRcBLAGCMQnePF4zguuuSTiLGgicl0EwI/3iT8IUxmEc7LW/sSKF+EKiFPgZNGIIhIJhCXJ2jhMGJE0JeqdYfnQtkTr7sKjCupCKnFoPwQGmaOQ5PuKsWLmI4iENewCjUirnv2ujBNceTRmwHnRoTBDfJNuHgDZ6IHmja7iz4LxKz5uZjlnO5bYrZS1o1fyqRxKfPGiMjbnLijIBBD8IGbVnB+WCtqW/CYu7CAzwVSj5pqkX3GHWiADy01lw931ogsg3jd98L08210Tpwbnc+bypu5/8Cv3tj1UP6ozvCY0aULi3r94sITdkbX02fPXyAtDFr4NcLKWIJBLwVBtL/C6XUwDHojCGKQapAvvX2H5/TwNViNaCV2n8OwIIj3LKEonbfDakRIjecHGNH88ZOUv8MWO2pI+flLauGKZXeM+GoV4jfxLUDs5fX9h83m/QSv1kmA2D/5qQAAAABJRU5ErkJggg=="
-                           x="5" y="36" width="389" height="142"/>
-                </svg>
 
+<div class="head">
+    <div class="head_content">
+        <div class="search">
+            <div class="search_box">
+                <input type="text" class="search_input" value="">
+                <button class="search_button fa fa-search" onclick="reload()"></button>
             </div>
-            <ul id="head_content_nav">
-                <li>
-                    <a href="/">首页</a>
-                </li>
-                <li>
-                    <a href="javascript:void(0)" class="nav_on">日志</a>
-                </li>
-                <li>
-                    <a href="/music">音乐</a>
-                </li>
-                <li>
-                    <a href="/pics">图片</a>
-                </li>
+            <div class="search_tags">文章分类
+            </div>
+            <ul class="tags">
+                <li>全部文章</li>
+                <li>日常吐槽</li>
+                <li>技术相关</li>
             </ul>
         </div>
-    </div>
-    <div id="my-info">
-        <div class="head-img"></div>
-        <p>欢迎&nbsp&nbsp&nbsp博客大部分图片来自&nbsppixiv</p>
+        <ul class="head_content_nav">
+            <li>
+                <a href="/">首页</a>
+            </li>
+            <li>
+                #if($article)
+                    <a href="/article">文章</a>
+                #else
+                    <a href="javascript:void(0)" class="nav_on">文章</a>
+                #end
+            </li>
+            <li>
+                <a href="/comments">交♂流</a>
+            </li>
+            <li>
+                <a href="/about">关于</a>
+            </li>
+        </ul>
     </div>
 </div>
+##    <div id="my-info">
+##        <div class="head-img"></div>
+##        <p>欢迎&nbsp&nbsp&nbsp博客大部分图片来自&nbsppixiv</p>
+##    </div>
+
+<div id="content">
 ##此语句成立条件：变量为布尔值时为true,非不二变量且不为null时。
     #if($article)
-    <div class="article">
-        <h1 class="article_title"><a href="javascript:void(0)">$article.articleTitle</a></h1>
-        <div class="article_date">#if($article.articleDate)
-            日期：$date.format("yyyy年MM月dd日 HH:mm:ss",$article.articleDate) |#end 已阅：$article.views 次
-            | 评论：暂未开通
+        <div class="article">
+            <h1 class="article_title"><a href="javascript:void(0)">$article.articleTitle</a></h1>
+            <div class="article_date">#if($article.articleDate)
+                <span class="fa fa-calendar-o"></span>$date.format("yyyy-MM-dd",$article.articleDate) |#end
+                已阅：$article.views 次
+                | 评论：暂未开通
+            </div>
+            <div class="article_content full-data">$article.content</div>
+            <div style="clear:both"></div>
         </div>
-        <div class="article_condent full-data">$article.content</div>
-        <div style="clear:both"></div>
-    </div>
+        <div class="doc_comments">
+            <div class="doc_comments_wrapper">
+                <div class="comments_block_title">发表评论</div>
+                <div class="new_comment_form_container">
+                    <form id="new_comment_form" method="post" action="/service/comment/new">
+                        <input name="path" type="hidden" value="">
+                        <input id="reply_to_id" name="reply" type="hidden" value="">
+                        <div class="comment_trigger" style="display: none;">
+                            <div class="avatar"><img src="/visitor.png">
+                            </div>
+                            <div class="trigger_title">撰写评论</div>
+                        </div>
+                        <div class="new_comment"><textarea name="content" rows="2" class="textarea_box"></textarea>
+                            <span class="comment_error"></span>
+                        </div>
+                        <div class="comment_triggered" style="display: block;">
+                            <div class="input_body">
+                                <ul class="ident">
+                                    <li>
+                                        <input type="text" name="reply_author" placeholder="你的昵称">
+                                    </li>
+                                    <li>
+                                        <input type="text" name="reply_email" placeholder="你的邮箱">
+                                    </li>
+                                    <li>
+                                        <input type="text" name="reply_site" placeholder="你的网站">
+                                    </li>
+                                </ul>
+                                <input type="submit" value="提交评论" class="comment_submit_button c_button">
+                            </div>
+                        </div>
+                    </form>
+                </div>
+                <ul class="comments"></ul>
+                <script src="/bloglt-static-file/js/comments.js"></script>
+            </div>
+        </div>
+    #else
+        <div class="page_content">
+
+        </div>
+        <div class="pages_container">
+            <ul class="pages">
+            </ul>
+        </div>
     #end
-<div id="footer">
-    <div class="footer-content"></div>
 </div>
+<div id="footer">
+    <div class="footer-content">
+        <p>Copyright © 2017 Trye 然而并没有备案</p>
+    <p><a href="https://amazonaws-china.com" target="_blank"> AWS </a>部署,<a href="https://www.qiniu.com/" target="_blank"> 七牛云 </a>静态文件,博客大部分图片来自<a href="https://www.pixiv.net/" target="_blank"> pixiv</a></p>
+    </div>
+</div>
+
 <script>hljs.initHighlightingOnLoad();</script>
+<script>
+
+    var reload = function () {
+        console.log($.trim($('.search_input').val()))
+        if ($.trim($('.search_input').val()) == '') {
+            alert("请输入查询标题");
+        } else {
+            search = '%' + $.trim($('.search_input').val()) + '%';
+            isFirstLoad = true;
+            ajax(1, 10);
+        }
+
+    }
+    var search;
+    var isFirstLoad = true;
+    var ajax = function (a, b) {
+        $.ajax(
+                {
+                    type: 'GET',
+                    url: '/articlelist',
+                    data: {currentPage: a, pageSize: b, startRow: b * (a - 1), title: search},
+                    dataType: 'json',
+                    success: function (data) {
+                        console.log("success")
+                        if (isFirstLoad) {
+                            console.log('OKKKK第一次');
+                            $('.pages').jqPaginator({
+                                totalPages: data.totalPages,
+                                visiblePages: b,
+                                currentPage: a,
+                                first: '<li class="first"><a href="javascript:void(0);">首页</a></li>',
+                                last: '<li class="last"><a href="javascript:void(0);">末页</a></li>',
+                                page: '<li class="page"><a href="javascript:void(0);">{{page}}</a></li>',
+                                onPageChange: function (num) {
+                                    if (!isFirstLoad) {
+                                        console.log(num)
+                                        ajax(num, b);
+                                        return;
+                                    }
+                                    makeContent(data);
+                                    isFirstLoad = false;
+                                }
+                            });
+                            return;
+                        } else {
+                            console.log('已经加载过了');
+                            makeContent(data);
+                        }
+                    }
+                }
+        )
+    }
+    $(function () {
+        if ($('.article').length > 0) {
+            return;
+        } else {
+            ajax(1, 10);
+        }
+    });
+
+    function makeContent(a) {
+        $('.page_content').html('');
+        var o = a.dataList;
+        var length = a.dataList.length;
+        for (var i = 0; i < length; ++i) {
+            var tmp = o[i];
+            var date = getMyDate(tmp.articleDate);
+            $('.page_content').append(
+                    '<div class="pages_article">' +
+                    '<h2 class="pages_article_title"><a href="/readarticle?articleId=' + tmp.articleId +
+                    '" target="_blank">' + tmp.articleTitle + '</a></h2>' +
+                    '<div class="pages_article_date">日期：' + date + ' | 已阅：' + tmp.views + ' 次 | 评论：暂未开通' +
+                    '</div>' +
+                    '<div class="page_article_condent short-data">' + tmp.contentShort + '</div>' +
+                    //                    '<a class="article_more" href="/readarticle?articleId=' + tmp.articleId + '" target="_blank">阅读全文>></a>' +
+                    //                    '<div style="clear:both"></div>' +
+                    '<hr /></div>'
+            )
+        }
+    }
+
+    function getMyDate(str) {
+        var oDate = new Date(str),
+                oYear = oDate.getFullYear(),
+                oMonth = oDate.getMonth() + 1,
+                oDay = oDate.getDate(),
+//                oHour = oDate.getHours(),
+//                oMin = oDate.getMinutes(),
+//                oSen = oDate.getSeconds(),
+                oTime = oYear + '-' + getzf(oMonth) + '-' + getzf(oDay);
+//                        + ' ' + getzf(oHour) + ':' + getzf(oMin) + ':' + getzf(oSen);最后拼接时间
+        return oTime;
+    };
+
+    function getzf(num) {
+        if (parseInt(num) < 10) {
+            num = '0' + num;
+        }
+        return num;
+    }
+</script>
 </body>
 </html>

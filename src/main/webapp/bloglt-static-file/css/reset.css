@@ -1,36 +1,37 @@
 /********************重置样式表，全局设置***********************/
-#body:after {
-	content: ".";
-	display: block;
-	height: 0;
-	clear: both;
-	visibility: hidden;
-}
-
 
 /* Hides from IE-mac \*/
 
 * html .clearfix {
-	height: 1%;
+    height: 1%;
 }
 
-
 /* End hide from IE-mac */
-
 
 /*以下是重置样式表*/
 
 * {
-	
-	margin: 0;
-	padding: 0;
+
+    margin: 0;
+    padding: 0;
 }
 
 a {
-	text-decoration: none;
-	color: #000000;
+    text-decoration: none;
+    color: #000000;
 }
 
-body {
-	background: #DDDDDD;
+p {
+    padding: 5px 0;
+    letter-spacing: 0.01em;
+    color: #444;
+}
+
+h1, h2, h3, h4, h5, h6 {
+    color: #444;
+}
+
+input, button {
+    border: none;
+    outline: none;
 }

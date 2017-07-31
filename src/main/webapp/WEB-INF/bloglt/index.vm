@@ -7,54 +7,63 @@
     <meta name="description" content="imtrye是个人博客站点,我叫老汤,这里分享一些日常心得,希望大家喜欢" />
     <meta name="viewport" content="width=device-width, height=device-height, initial-scale=1.0, user-scalable=yes">
     <link rel="stylesheet" type="text/css" href="/bloglt-static-file/css/common.css"/>
+    <link rel="stylesheet" type="text/css" href="/bloglt-static-file/css/default.css"/>
     <link rel="stylesheet" type="text/css" href="/bloglt-static-file/css/index.css"/>
     <link rel="stylesheet" type="text/css" href="/bloglt-static-file/css/common-article.css"/>
     <link rel="stylesheet" type="text/css" href="/bloglt-static-file/css/reset.css"/>
-    <link rel="stylesheet" type="text/css" href="/bloglt-static-file/css/default.css"/>
+
+    <link href="https://cdn.bootcss.com/font-awesome/4.7.0/css/font-awesome.css" rel="stylesheet">
     <script src="http://libs.baidu.com/jquery/2.0.0/jquery.min.js"></script>
     <script src="/bloglt-static-file/js/highlight.pack.js"></script>
+    <!--[if IE 8]>
+    <style>
+    #content{-ms-filter:"progid:DXImageTransform.Microsoft.gradient(startColorstr=#B2d3d3d3,endColorstr=#B2d3d3d3)";}
+    .head_content{-ms-filter:"progid:DXImageTransform.Microsoft.gradient(startColorstr=#7FFFFFFF,endColorstr=#7FFFFFFF)";}
+    </style>
+    <![endif]-->
 </head>
 <body>
 <div class="top">
-    <div id="head">
-        <div id="head_content">
-            <div id="head_content_logo">
+    <div class="head">
+        <div class="head_content">
+            <div class="head_content_logo">
                 <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"
                      preserveAspectRatio="xMidYMid" width="100" height="50" viewBox="0 0 400 200">
                     <image xlink:href="data:img/png;base64,iVBORw0KGgoAAAANSUhEUgAAAGIAAAAkCAMAAABFeh9NAAAABGdBTUEAALGPC/xhBQAAACBjSFJNAAB6JgAAgIQAAPoAAACA6AAAdTAAAOpgAAA6mAAAF3CculE8AAACUlBMVEUAAAD///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////8AAAAXIu9ZAAAAxHRSTlMAob6k+f7Y3AEEAwKi5uLl3hdRqr3P2+Tjwp1ZBcodsd9Wt/oal1u1lpWzEBMn4Bu5uFUuZnkoRU01DhRATCosiDBgUoTtpzQm9MMSqXYN2fAHPuh3S/zMfHVcjjwvbrC0kx/O7mitBispzaM27zNzrh6Kci1JglMyVNr9Fhi268TGFSTnIOoKyxkR3dasI/Hy6b9GxQn1evNK1Lr7jdFaDNPJ15wiu6WJZ5APj8dBV3RpMXtlSEQcgbJi7MBrOTqRP+FwoS/qOAAAAAFiS0dEAIgFHUgAAAAJcEhZcwAALiMAAC4jAXilP3YAAANTSURBVEjHzZXnWxNBEMYXJCQYSgSkiCIttBBAMZSgFGmhSBUUpQiWGJqiKCJFAQEhAoKoKEYsiA1s2Hu5P8ybvYTbSw5bcs/jfGDefWeY35XdC7Kzp2MVEjIcKDpEgiIcASH+LxESJ8lqia0REqmUWDm7uLrJ1tgO4e7hudbL1dtH7LvObz1jbYD/87cdYiPFRkAgtoJoGRxiO4ScIiNUMERYeESkCDMUQiGiaKGMNt3GvyFiYmM3mYX9ZhYRB2oLKJUFIj4hMUlNjk3eui0FNiGSSkhEKmUZaSwiHdR2UBlchCITD8nKzjEBNNm5tJGXHxctiy4gERoexA4WUQgXV0SL4hIOorRsuXsnQyivYJaOBfSfXSQingexm0VUZuzZmwWiirOjqsn2GigpORNqSYSSB6Ey37Qiu0LEQfiAu680pw6X62lnP4gDqoNB2DlEIrQph3U6nRK/USpcQ2tddZQlIoWDCASzAZxGUHKEmiA3xyDjiS3g2bQteNQRi027HJkk4ig45eC0gvJB6Bjk4+C0rYQ4geectEC0a051ZONaB4E4TefOLtyFz0w36oEUD4b/3yLwHBWoABbhdAaeSgnuOgs1DeoFaB8Y/QSi6E8Q+FygcyAHWMQgnXOHcOk8lFoxSTQMxgCBkCnUI0woJFyE1hyhB5nDPqgLsO7HpWKglaBRcBLAGCMQnePF4zguuuSTiLGgicl0EwI/3iT8IUxmEc7LW/sSKF+EKiFPgZNGIIhIJhCXJ2jhMGJE0JeqdYfnQtkTr7sKjCupCKnFoPwQGmaOQ5PuKsWLmI4iENewCjUirnv2ujBNceTRmwHnRoTBDfJNuHgDZ6IHmja7iz4LxKz5uZjlnO5bYrZS1o1fyqRxKfPGiMjbnLijIBBD8IGbVnB+WCtqW/CYu7CAzwVSj5pqkX3GHWiADy01lw931ogsg3jd98L08210Tpwbnc+bypu5/8Cv3tj1UP6ozvCY0aULi3r94sITdkbX02fPXyAtDFr4NcLKWIJBLwVBtL/C6XUwDHojCGKQapAvvX2H5/TwNViNaCV2n8OwIIj3LKEonbfDakRIjecHGNH88ZOUv8MWO2pI+flLauGKZXeM+GoV4jfxLUDs5fX9h83m/QSv1kmA2D/5qQAAAABJRU5ErkJggg=="
                            x="5" y="36" width="389" height="142"/>
                 </svg>
             </div>
-            <ul id="head_content_nav">
+            <ul class="head_content_nav">
                 <li>
                     <a href="javascript:void(0)" class="nav_on">首页</a>
                 </li>
                 <li>
-                    <a href="/article">日志</a>
+                    <a href="/article">文章</a>
                 </li>
                 <li>
-                    <a href="/music">音乐</a>
+                    <a href="/comments">交♂流</a>
                 </li>
                 <li>
-                    <a href="/pics">图片</a>
+                    <a href="/about">关于</a>
                 </li>
             </ul>
         </div>
     </div>
-    <div id="my-info">
-        <div class="head-img"></div>
-        <p>欢迎&nbsp&nbsp&nbsp博客大部分图片来自&nbsppixiv</p>
-    </div>
+##    <div id="my-info">
+##        <div class="head-img"></div>
+##        <p>欢迎&nbsp&nbsp&nbsp博客大部分图片来自&nbsppixiv</p>
+##    </div>
 </div>
+<div id="content">
 <div id="body">
     #foreach($article in $articleList)
         <div class="article">
             <h1 class="article_title"><a href="/readarticle?articleId=$article.articleId" target="_blank">$article.articleTitle</a></h1>
-            <div class="article_date">日期：$date.format("yyyy年MM月dd日 HH:mm:ss",$article.articleDate) | 已阅：$article.views 次
+            <div class="article_date"><span class="fa fa-calendar-o"></span>$date.format("yyyy-MM-dd",$article.articleDate) | 已阅：$article.views 次
                 | 评论：暂未开通
             </div>
-            <div class="article_condent full-data" style="display: none">$article.content</div>
-            <div class="article_condent short-data"></div>
+            <div class="article_content full-data" style="display: none">$article.content</div>
+            <div class="article_content short-data"></div>
             <a class="article_more" href="/readarticle?articleId=$article.articleId" target="_blank">阅读全文>></a>
             <div style="clear:both"></div>
         </div>
@@ -63,8 +72,13 @@
 <div class="default-content">
     <a class="load-more" href="javascript:void(0)">加载更多...</a>
 </div>
+
+</div>
 <div id="footer">
-    <div class="footer-content"></div>
+    <div class="footer-content">
+        <p>Copyright © 2017 Trye 然而并没有备案</p>
+        <p><a href="https://amazonaws-china.com" target="_blank"> AWS </a>部署,<a href="https://www.qiniu.com/" target="_blank"> 七牛云 </a>静态文件,博客大部分图片来自<a href="https://www.pixiv.net/" target="_blank"> pixiv</a></p>
+    </div>
 </div>
 <script>hljs.initHighlightingOnLoad();</script>
 <script src="/bloglt-static-file/js/load_more_indexArticle.js"></script>

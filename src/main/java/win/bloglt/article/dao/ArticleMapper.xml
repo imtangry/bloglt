@@ -44,18 +44,32 @@
         <include refid="Base_Column_List"/>,
         <include refid="Blob_Column_List"/>
         from article
-        where article_author_id = #{articleAuthorId,jdbcType=INTEGER}
-        <if test="title != null">
+        <if test="articleAuthorId != 0">
+            where article_author_id = #{articleAuthorId,jdbcType=INTEGER}
+        </if>
+
+        <if test="articleAuthorId != 0 and title != null">
             AND article_title LIKE #{title,jdbcType=VARCHAR}
+        </if>
+
+        <if test="articleAuthorId == 0 and title != null">
+            where article_title LIKE #{title,jdbcType=VARCHAR}
         </if>
         ORDER BY article_id DESC limit #{startRow},#{queryRow}
     </select>
 
     <select id="getRecord" resultType="Integer">
         select count(0) from article
-        where article_author_id = #{articleAuthorId,jdbcType=INTEGER}
-        <if test="title != null">
+        <if test="articleAuthorId != 0">
+            where article_author_id = #{articleAuthorId,jdbcType=INTEGER}
+        </if>
+
+        <if test="articleAuthorId != 0 and title != null">
             AND article_title LIKE #{title,jdbcType=VARCHAR}
+        </if>
+
+        <if test="articleAuthorId == 0 and title != null">
+            where article_title LIKE #{title,jdbcType=VARCHAR}
         </if>
     </select>
 

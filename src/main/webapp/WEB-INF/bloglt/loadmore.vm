@@ -1,11 +1,11 @@
 #foreach($article in $articleList)
 <div class="article">
     <h1 class="article_title"><a href="/readarticle?articleId=$article.articleId" target="_blank">$article.articleTitle</a></h1>
-    <div class="article_date">日期：$date.format("yyyy年MM月dd日 HH:mm:ss",$article.articleDate) | 已阅：$article.views 次
+    <div class="article_date"><span class="fa fa-calendar-o"></span>$date.format("yyyy-MM-dd",$article.articleDate) | 已阅：$article.views 次
         | 评论：暂未开通
     </div>
-    <div class="article_condent full-data" style="display: none">$article.content</div>
-    <div class="article_condent short-data"></div>
+    <div class="article_content full-data" style="display: none">$article.content</div>
+    <div class="article_content short-data"></div>
     <a class="article_more" href="/readarticle?articleId=$article.articleId" target="_blank">阅读全文>></a>
     <div style="clear:both"></div>
 </div>

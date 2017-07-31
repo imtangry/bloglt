@@ -1,0 +1,150 @@
+/*主题背景*/
+body {
+    background-color: #e3e3e3;
+}
+
+#content {
+    min-height: 550px;
+    width: 100%;
+    /*background-image: url("/bloglt-static-file/body-img/body_img04.png");*/
+    /*background-repeat: no-repeat;*/
+    /*background-position: center center;*/
+    padding-top: 20px;
+    padding-bottom: 100px;
+}
+
+/*头部搜索*/
+.search{
+    position: relative;
+    height: 40px;
+    width: auto;
+    float: left;
+}
+.search_box {
+    background-color: #d3d3d3;
+    height: 30px;
+    width: 180px;
+    margin-top: 5px;
+    float: left;
+    border-radius: 15px;
+}
+
+.search_input {
+    float: left;
+    width: 140px;
+    height: 30px;
+    background-color: transparent;
+    margin-left: 10px;
+}
+
+.search_button {
+    width: 30px;
+    height: 30px;
+    background-color: transparent;
+    cursor: pointer;
+}
+.search_tags{
+    letter-spacing: 4px;
+    cursor: pointer;
+    background-color: #1d92c9;
+    color: #FFFFFF;
+    height: 40px;
+    width: 120px;
+    float: left;
+    margin-left: 10px;
+    font: 300 16px/40px "microsoft yahei";
+    text-align: center;
+}
+.search_tags:hover{
+    background-color: #021c53;
+}
+.tags{
+    display: none;
+    position: absolute;
+    top:40px;
+    right: 0;
+    letter-spacing: 4px;
+    color: #FFFFFF;
+    width: 120px;
+
+}
+.tags li{
+    cursor: pointer;
+    display: block;
+    height: 40px;
+    width: 120px;
+    background-color: #1d92c9;
+    font: 300 16px/40px "microsoft yahei";
+    text-align: center;
+}
+.tags li:hover{
+    background-color: #021c53;
+}
+
+
+/*重写头部透明度*/
+/*.head_content {*/
+/*height: 40px;*/
+/*width: 100%;*/
+/*background-color: rgba(33, 33, 33, 0.8);*/
+/*margin: 0 auto;*/
+/*}*/
+/*分页样式*/
+.pages_container {
+    text-align: center;
+    margin: 0 auto;
+}
+
+.pages {
+    display: inline-block;
+    margin: 0 auto;
+}
+
+.pages li {
+    display: block;
+    float: left;
+}
+
+.pages a {
+    background-color: #FFFFFF;
+    display: block;
+    padding: 10px 15px;
+    margin-left: 10px;
+    border: solid #999 1px;
+    border-radius: 4px;
+    cursor: pointer;
+}
+
+.pages a:hover {
+    color: #555;
+    border-color: #555;
+}
+
+.active a {
+    background-color: #555;
+    color: #FFFFFF;
+    border: none;
+    cursor: default;
+}
+
+.active a:hover {
+    color: #FFF;
+}
+
+/*分页显示的内容的样式*/
+.page_content {
+    background-color: rgba(255, 255, 255, 0.8);
+    width: 90%;
+    margin: 20px auto 0;
+
+}
+
+.pages_article {
+    margin-bottom: 20px;
+}
+
+.pages_article_date {
+    color: #555555;
+    font-size: 12px;
+    margin: 0 0 5px;
+}

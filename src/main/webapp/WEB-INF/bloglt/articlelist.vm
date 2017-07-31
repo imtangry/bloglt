@@ -225,11 +225,11 @@ scratch. This page gets rid of all links and provides the needed markup only.
                 "sNext": "下页",
                 "sLast": "末页",
                 "sJump": "跳转"
-            },
-            "oAria": {
-                "sSortAscending": ": 以升序排列此列",
-                "sSortDescending": ": 以降序排列此列"
             }
+//            "oAria": {
+//                "sSortAscending": ": 以升序排列此列",
+//                "sSortDescending": ": 以降序排列此列"
+//            }
         };
 
         //初始化表格

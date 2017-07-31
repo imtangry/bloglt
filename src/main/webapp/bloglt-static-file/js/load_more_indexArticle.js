@@ -1,5 +1,7 @@
 // 顺带解决载入文章的按钮？
 //生成short内容，试验,此版本还没有加入图片功能。
+//更新：貌似图片也不用考虑,非连续多图情况下
+// 考虑新加载的dom没有执行highlight的渲染
 $(function(){
     load_short(100,5);
 })
@@ -10,6 +12,7 @@ function load_short(wordCounts, replaceCounts) {
     var start = shortdata - 1;
     var end = start - replaceCounts;
     for (start; start > end; --start) {
+
         // console.log(start)
         //此处已经获得full-data块下的所有子节点了。
         //此处逻辑版本：1;
@@ -47,9 +50,12 @@ function load_short(wordCounts, replaceCounts) {
                 }
                 short_child.append(child);
             }
-        }
-
+        }//解决代码块高亮
+        $('.short-data pre code').each(function(i, block) {
+            hljs.highlightBlock(block);
+        });
     }
+
 }
 
 
@@ -80,20 +86,19 @@ $(".load-more").click(function () {
                     }
                 }
                 console.log(data_length);
-                if (data_length < 5) {
+                if (data_length == 5) {
                     setTimeout(function () {
                         $("#body").append(data);
-                        $(".load-more").text("没有更多喽...-________-\'\'");
-                        load_short(100,data_length)
+                        $(".load-more").text("加载更多...");
+                        load_short(100,data_length);
+                        flag = true;
                     }, 400)
                 } else {
                     setTimeout(function () {
                         $("#body").append(data);
-                        $(".load-more").text("加载更多...");
-                        load_short(100,data_length)
-                        flag = true;
+                        $(".load-more").text("没有更多喽...-________-\'\'");
+                        load_short(100,data_length);
                     }, 400)
-
                 }
             }
         });

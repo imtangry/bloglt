@@ -36,8 +36,8 @@
         var first_submit_time = new Date();
         var text = CKEDITOR.instances.ckeditor.document.getBody().getText();
         console.log(text);
-        if (text.length > 200) {
-            $('#contentShort').val(text.substr(0, 200));
+        if (text.length > 100) {
+            $('#contentShort').val(text.substr(0, 100));
         } else {
             $('#contentShort').val(text);
         }
