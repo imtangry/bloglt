@@ -11,41 +11,43 @@
         #end
     </title>
     <meta name="viewport" content="width=device-width, height=device-height, initial-scale=1.0, user-scalable=yes">
+    <link rel="stylesheet" type="text/css" href="/bloglt-static-file/css/reset.css"/>
     <link rel="stylesheet" type="text/css" href="/bloglt-static-file/css/common.css"/>
     <link rel="stylesheet" type="text/css" href="/bloglt-static-file/css/default.css"/>
+
+
+    <link href="https://cdn.bootcss.com/font-awesome/4.7.0/css/font-awesome.css" rel="stylesheet">
+    <script src="http://libs.baidu.com/jquery/2.0.0/jquery.min.js"></script>
     #if($article)
         <link rel="stylesheet" type="text/css" href="/bloglt-static-file/css/common-article.css"/>
         <link rel="stylesheet" type="text/css" href="/bloglt-static-file/css/article.css"/>
         <link rel="stylesheet" type="text/css" href="/bloglt-static-file/css/comments.css"/>
+        <script src="/bloglt-static-file/js/highlight.pack.js"></script>
     #else
         <link rel="stylesheet" type="text/css" href="/bloglt-static-file/css/page.css"/>
+        <script src="/bloglt-static-file/js/jqPaginator.min.js"></script>
     #end
-    <link href="https://cdn.bootcss.com/font-awesome/4.7.0/css/font-awesome.css" rel="stylesheet">
-    <link rel="stylesheet" type="text/css" href="/bloglt-static-file/css/reset.css"/>
 
-    <script src="http://libs.baidu.com/jquery/2.0.0/jquery.min.js"></script>
-    <script src="/bloglt-static-file/js/jqPaginator.min.js"></script>
-    <script src="/bloglt-static-file/js/highlight.pack.js"></script>
+
 </head>
-
 <body>
-
-
 <div class="head">
     <div class="head_content">
-        <div class="search">
-            <div class="search_box">
-                <input type="text" class="search_input" value="">
-                <button class="search_button fa fa-search" onclick="reload()"></button>
+        #if(!$article)
+            <div class="search">
+                <div class="search_box">
+                    <input type="text" class="search_input" value="">
+                    <button class="search_button fa fa-search" onclick="reload()"></button>
+                </div>
+                <div class="search_tags" ">文章分类
+                </div>
+                <ul class="tags">
+                    <li value="1" onclick="reloadByTag(this.value)">全部文章</li>
+                    <li>日常吐槽</li>
+                    <li>技术相关</li>
+                </ul>
             </div>
-            <div class="search_tags">文章分类
-            </div>
-            <ul class="tags">
-                <li>全部文章</li>
-                <li>日常吐槽</li>
-                <li>技术相关</li>
-            </ul>
-        </div>
+        #end
         <ul class="head_content_nav">
             <li>
                 <a href="/">首页</a>
@@ -70,7 +72,6 @@
 ##        <div class="head-img"></div>
 ##        <p>欢迎&nbsp&nbsp&nbsp博客大部分图片来自&nbsppixiv</p>
 ##    </div>
-
 <div id="content">
 ##此语句成立条件：变量为布尔值时为true,非不二变量且不为null时。
     #if($article)
@@ -123,7 +124,6 @@
         </div>
     #else
         <div class="page_content">
-
         </div>
         <div class="pages_container">
             <ul class="pages">
@@ -137,108 +137,9 @@
     <p><a href="https://amazonaws-china.com" target="_blank"> AWS </a>部署,<a href="https://www.qiniu.com/" target="_blank"> 七牛云 </a>静态文件,博客大部分图片来自<a href="https://www.pixiv.net/" target="_blank"> pixiv</a></p>
     </div>
 </div>
-
-<script>hljs.initHighlightingOnLoad();</script>
-<script>
-
-    var reload = function () {
-        console.log($.trim($('.search_input').val()))
-        if ($.trim($('.search_input').val()) == '') {
-            alert("请输入查询标题");
-        } else {
-            search = '%' + $.trim($('.search_input').val()) + '%';
-            isFirstLoad = true;
-            ajax(1, 10);
-        }
-
-    }
-    var search;
-    var isFirstLoad = true;
-    var ajax = function (a, b) {
-        $.ajax(
-                {
-                    type: 'GET',
-                    url: '/articlelist',
-                    data: {currentPage: a, pageSize: b, startRow: b * (a - 1), title: search},
-                    dataType: 'json',
-                    success: function (data) {
-                        console.log("success")
-                        if (isFirstLoad) {
-                            console.log('OKKKK第一次');
-                            $('.pages').jqPaginator({
-                                totalPages: data.totalPages,
-                                visiblePages: b,
-                                currentPage: a,
-                                first: '<li class="first"><a href="javascript:void(0);">首页</a></li>',
-                                last: '<li class="last"><a href="javascript:void(0);">末页</a></li>',
-                                page: '<li class="page"><a href="javascript:void(0);">{{page}}</a></li>',
-                                onPageChange: function (num) {
-                                    if (!isFirstLoad) {
-                                        console.log(num)
-                                        ajax(num, b);
-                                        return;
-                                    }
-                                    makeContent(data);
-                                    isFirstLoad = false;
-                                }
-                            });
-                            return;
-                        } else {
-                            console.log('已经加载过了');
-                            makeContent(data);
-                        }
-                    }
-                }
-        )
-    }
-    $(function () {
-        if ($('.article').length > 0) {
-            return;
-        } else {
-            ajax(1, 10);
-        }
-    });
-
-    function makeContent(a) {
-        $('.page_content').html('');
-        var o = a.dataList;
-        var length = a.dataList.length;
-        for (var i = 0; i < length; ++i) {
-            var tmp = o[i];
-            var date = getMyDate(tmp.articleDate);
-            $('.page_content').append(
-                    '<div class="pages_article">' +
-                    '<h2 class="pages_article_title"><a href="/readarticle?articleId=' + tmp.articleId +
-                    '" target="_blank">' + tmp.articleTitle + '</a></h2>' +
-                    '<div class="pages_article_date">日期：' + date + ' | 已阅：' + tmp.views + ' 次 | 评论：暂未开通' +
-                    '</div>' +
-                    '<div class="page_article_condent short-data">' + tmp.contentShort + '</div>' +
-                    //                    '<a class="article_more" href="/readarticle?articleId=' + tmp.articleId + '" target="_blank">阅读全文>></a>' +
-                    //                    '<div style="clear:both"></div>' +
-                    '<hr /></div>'
-            )
-        }
-    }
-
-    function getMyDate(str) {
-        var oDate = new Date(str),
-                oYear = oDate.getFullYear(),
-                oMonth = oDate.getMonth() + 1,
-                oDay = oDate.getDate(),
-//                oHour = oDate.getHours(),
-//                oMin = oDate.getMinutes(),
-//                oSen = oDate.getSeconds(),
-                oTime = oYear + '-' + getzf(oMonth) + '-' + getzf(oDay);
-//                        + ' ' + getzf(oHour) + ':' + getzf(oMin) + ':' + getzf(oSen);最后拼接时间
-        return oTime;
-    };
-
-    function getzf(num) {
-        if (parseInt(num) < 10) {
-            num = '0' + num;
-        }
-        return num;
-    }
-</script>
+#if($article)
+<script>hljs.initHighlightingOnLoad()</script>
+#end
+<script src="/bloglt-static-file/js/search_article.js"></script>
 </body>
 </html>

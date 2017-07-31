@@ -6,11 +6,11 @@
     <meta name="Keywords" content="博客,个人博客,java,web,blog,前端,后端,学习,技术,自建博客">
     <meta name="description" content="imtrye是个人博客站点,我叫老汤,这里分享一些日常心得,希望大家喜欢" />
     <meta name="viewport" content="width=device-width, height=device-height, initial-scale=1.0, user-scalable=yes">
+    <link rel="stylesheet" type="text/css" href="/bloglt-static-file/css/reset.css"/>
     <link rel="stylesheet" type="text/css" href="/bloglt-static-file/css/common.css"/>
     <link rel="stylesheet" type="text/css" href="/bloglt-static-file/css/default.css"/>
     <link rel="stylesheet" type="text/css" href="/bloglt-static-file/css/index.css"/>
     <link rel="stylesheet" type="text/css" href="/bloglt-static-file/css/common-article.css"/>
-    <link rel="stylesheet" type="text/css" href="/bloglt-static-file/css/reset.css"/>
 
     <link href="https://cdn.bootcss.com/font-awesome/4.7.0/css/font-awesome.css" rel="stylesheet">
     <script src="http://libs.baidu.com/jquery/2.0.0/jquery.min.js"></script>
@@ -84,10 +84,3 @@
 <script src="/bloglt-static-file/js/load_more_indexArticle.js"></script>
 </body>
 </html>
-##<div class="article">
-##            <h1 class="article_title"><a href="javascript:void(0)" >$article.articleTitle</a></h1>
-##            <div class="article_date">日期：$date.format("yyyy-MM-dd HH:mm:ss",$article.articleDate)</div>
-##    <div class="article_condent">$article.contentShort</div>
-##            <a class="article_more" href="javascript:void(0) ">阅读全文>></a>
-##            <div style="clear:both"></div>
-##</div>

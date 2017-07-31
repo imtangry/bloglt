@@ -35,3 +35,12 @@ input, button {
     border: none;
     outline: none;
 }
+
+pre code {
+    font-size: 14px;
+}
+
+pre code span {
+    display: inline-block;
+    padding-top: 2px;
+}

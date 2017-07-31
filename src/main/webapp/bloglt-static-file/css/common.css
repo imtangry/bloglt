@@ -3,12 +3,13 @@
 /**************头部开始********************/
 .head {
     position: relative;
-    height: 40px;
+    height: auto;
     width: 100%;
 
 }
 
 .head_content {
+    position:relative;
     height: 40px;
     width: 100%;
     /*background-color: rgba(33, 33, 33, 0.6);*/
@@ -30,6 +31,7 @@
 
 .head_content_nav {
     display: block;
+    position: relative;
     float: right;
     height: 40px;
     width: 35%;
@@ -118,8 +120,9 @@
 .footer-content {
     position: relative;
     bottom: 0;
-    width: 50%;
-    padding-top: 60px;
+    width: 80%;
+    height: 70px;
+    padding-top: 50px;
     margin: 0 auto;
     text-align: center;
     color: #EEE;
@@ -139,7 +142,9 @@
 /*********** 脚步部公共的CSS结束***************/
 
 /*********************其他*************************/
-
+#content{
+    min-height: 550px;
+}
 /*自适应CSS头部*/
 @media screen and (max-device-width: 420px) {
     .head_content_logo {

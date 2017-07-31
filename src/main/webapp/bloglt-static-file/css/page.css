@@ -4,7 +4,6 @@ body {
 }
 
 #content {
-    min-height: 550px;
     width: 100%;
     /*background-image: url("/bloglt-static-file/body-img/body_img04.png");*/
     /*background-repeat: no-repeat;*/
@@ -14,14 +13,15 @@ body {
 }
 
 /*头部搜索*/
-.search{
+.search {
     position: relative;
     height: 40px;
     width: auto;
     float: left;
 }
+
 .search_box {
-    background-color: #d3d3d3;
+    background-color: #AAA;
     height: 30px;
     width: 180px;
     margin-top: 5px;
@@ -43,7 +43,8 @@ body {
     background-color: transparent;
     cursor: pointer;
 }
-.search_tags{
+
+.search_tags {
     letter-spacing: 4px;
     cursor: pointer;
     background-color: #1d92c9;
@@ -51,24 +52,22 @@ body {
     height: 40px;
     width: 120px;
     float: left;
-    margin-left: 10px;
+    margin-left: 20px;
     font: 300 16px/40px "microsoft yahei";
     text-align: center;
 }
-.search_tags:hover{
-    background-color: #021c53;
-}
-.tags{
+.tags {
     display: none;
     position: absolute;
-    top:40px;
+    top: 40px;
     right: 0;
     letter-spacing: 4px;
     color: #FFFFFF;
     width: 120px;
 
 }
-.tags li{
+
+.tags li {
     cursor: pointer;
     display: block;
     height: 40px;
@@ -77,10 +76,10 @@ body {
     font: 300 16px/40px "microsoft yahei";
     text-align: center;
 }
-.tags li:hover{
+
+.tags li:hover {
     background-color: #021c53;
 }
-
 
 /*重写头部透明度*/
 /*.head_content {*/
@@ -132,19 +131,94 @@ body {
 }
 
 /*分页显示的内容的样式*/
-.page_content {
-    background-color: rgba(255, 255, 255, 0.8);
-    width: 90%;
-    margin: 20px auto 0;
+.search_condition {
+    letter-spacing: 4px;
+    background-color: #FFF;
+    padding: 10px 0 10px 20px;
+    height: 40px;
+    color: #1d92c9;
+    font: 500 20px/40px "Microsoft YaHei";
+    border-left: 6px solid #1d92c9;
+    border-radius: 4px;
+}
 
+.page_content {
+    width: 90%;
+    margin: 20px auto;
 }
 
 .pages_article {
+    background-color: #FFFFFF;
+    margin-top: 20px;
+    padding: 20px 0 10px;
+    border-radius: 4px;
+}
+
+.pages_article_title {
+    display: block;
+    padding-left: 10px;
+    border-left: 4px solid #1d92c9;
+    transition: border-left 0.5s ease;
+    font-weight: 500;
     margin-bottom: 20px;
+}
+
+.pages_article_title:hover {
+    border-left: 12px solid #1d92c9;
+}
+
+.pages_article_title a {
+    color: #444;
+    transition: color 0.5s ease;
+}
+
+.pages_article_title a:hover {
+    color: #1d92c9;
+}
+
+.pages_article_content {
+    color: #555;
+    background-color: #f9f9f9;
+    border-top: 1px solid #e8e8e8;
+    border-bottom: 1px solid #e8e8e8;
+    padding: 20px;
 }
 
 .pages_article_date {
     color: #555555;
     font-size: 12px;
-    margin: 0 0 5px;
+    margin: 5px auto;
+}
+
+.pages_article_date span {
+    margin: 0 10px;
+}
+
+/*分页界面的自适应*/
+@media screen and (max-device-width: 420px) {
+    .page_content {
+        width: 100%;
+    }
+.head_content{
+    height: 80px;
+}
+.head_content_nav{
+    top:-40px;
+}
+.search{
+    top:40px;
+    width: 100%;
+}
+.search_tags{
+    float: right;
+}
+.tags{
+    width: 100%;
+}
+.tags li{
+    width: 100%;
+    text-align: left;
+    padding-left: 20px;
+}
+
 }

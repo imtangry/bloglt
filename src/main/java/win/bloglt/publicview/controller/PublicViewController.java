@@ -56,6 +56,9 @@ public class PublicViewController {
     @ResponseBody
     public Pages showList(QueryArticle queryArticle) {
         Pages pages = articleService.getQueryArticle(queryArticle);
+        if (pages==null){
+            return new Pages();
+        }
         return pages;
     }
 
